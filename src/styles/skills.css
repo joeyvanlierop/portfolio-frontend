@@ -1,0 +1,41 @@
+.row {
+    margin: 0;
+}
+
+.skill-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem;
+    margin: 0.5rem 0;
+    border: 2px black solid;
+    border-radius: 10px;
+}
+
+.skill-card:not(:first-child) {
+    margin-left: 0.5rem;
+}
+
+.skill-card:not(:last-child) {
+    margin-right: 0.5rem;
+}
+
+
+.skill-card-title {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.skill-card-title {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.resume-download {
+    margin: 0 0 0.8rem 2rem;
+    font-weight: 600;
+    font-size: 1.25rem;
+    border: 2px black solid;
+}

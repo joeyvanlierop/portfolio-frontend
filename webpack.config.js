@@ -7,7 +7,7 @@ module.exports = {
      *
      * The first place Webpack looks to start building the bundle.
      */
-    entry: './src/js/index.js',
+    entry: './src/index.js',
 
     /**
      * Output
@@ -49,13 +49,10 @@ module.exports = {
              * Use Babel to transpile JavaScript files.
              */
             {
-                test: /\.(js)$/,
+                test: /\.(js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env']
-                    }
+                    loader: 'babel-loader'
                 }
             },
 
@@ -65,18 +62,33 @@ module.exports = {
              * Inject CSS into the head with source maps.
              */
             {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
             },
         ],
     },
+
+    /**
+     * Module
+     *
+     * Changes how modules are resolved.
+     */
+    resolve: {
+        extensions: ['*', '.js', '.jsx']
+    },
+
     /**
      * Webpack Dev Server
      * 
      * Updates the webpage in realtime
      */
     devServer: {
+        host: "192.168.0.8",
         contentBase: path.join(__dirname, 'src'),
+        disableHostCheck: true,
         watchContentBase: true,
     }
 }
