@@ -1,51 +1,51 @@
 .contact-input {
-    width: 100%;
-    padding: 1rem;
-    padding-left: 0;
-    border: none;
-    resize: none;
-    font-size: 1.25rem;
-    background-color: transparent;
-    border-bottom: 2px black dotted;
-    transition: border-color 0.3s ease;
+  width: 100%;
+  padding: 1rem;
+  padding-left: 0;
+  border: none;
+  resize: none;
+  font-size: 1.25rem;
+  background-color: transparent;
+  border-bottom: 2px black dotted;
+  transition: border-color 0.3s ease;
 }
 
 .contact-input textarea {
-    line-height: 1.5rem;
+  line-height: 1.5rem;
 }
 
-
 .contact-input.valid {
-    border-color: black;
+  border-color: black;
 }
 
 .contact-input:not(.valid) {
-    border-color: gray;
+  border-color: gray;
 }
 
-.contact-form textarea:focus, .contact-form input:focus {
-    outline: none;
+.contact-form textarea:focus,
+.contact-form input:focus {
+  outline: none;
 }
 
 .contact-form .row {
-    width: 100%;
+  width: 100%;
 }
 
 .contact-form .col {
-    padding: 0;
-    margin: 2rem 0;
+  padding: 0;
+  margin: 2rem 0;
 }
 
 .contact-form .col:not(:first-child) {
-    margin-left: 2rem;
+  margin-left: 2rem;
 }
 
 .contact-form .col:not(:last-child) {
-    margin-right: 2rem;
+  margin-right: 2rem;
 }
 
 .contact-form button {
-    font-size: 1.25rem;
-    margin: auto;
-    transition: all 0.3s ease;
+  font-size: 1.25rem;
+  margin: auto;
+  transition: all 0.3s ease;
 }

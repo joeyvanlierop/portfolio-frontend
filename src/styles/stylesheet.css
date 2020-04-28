@@ -1,59 +1,58 @@
 html {
-    scroll-padding-top: 7rem;
+  scroll-padding-top: 7rem;
 }
 
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #root {
-    font-family: 'Karla', sans-serif;
-    /* font-family: 'Josefin Sans', sans-serif; */
-    width: 100%;
+  font-family: "Karla", sans-serif;
+  /* font-family: 'Josefin Sans', sans-serif; */
+  width: 100%;
 }
 
 #splash {
-    height: 100vh;
+  height: 100vh;
 }
 
-#projects, #skills, #contact {
-    padding: 12rem 0;
+#projects,
+#skills,
+#contact {
+  padding: 12rem 0;
 }
-
 
 .header {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    padding-right: 1rem;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-right: 1rem;
 }
 
 .main-column {
-    padding: 0 2rem;
-    width: 100%;
-    max-width: 80rem;
+  padding: 0 2rem;
+  width: 100%;
+  max-width: 80rem;
 }
 
 .section {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
-
 
 .flex-center-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-
 .flex-center-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }

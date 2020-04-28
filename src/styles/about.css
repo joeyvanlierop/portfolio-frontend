@@ -1,42 +1,42 @@
 #about-wrapper {
-    margin: auto 0;
+  margin: auto 0;
 }
 
 #about {
-    color: #222831;
-    border-left: 2px dotted #30475e;
-    margin: 0;
-    padding: 0 2rem;
-    animation: 1s ease-out 0s 1 grow;
+  color: #222831;
+  border-left: 2px dotted #30475e;
+  margin: 0;
+  padding: 0 2rem;
+  animation: 1s ease-out 0s 1 grow;
 }
 
 .about-text {
-    font-family: 'Montserrat', sans-serif;
-    color: #30475e;
-    margin: 3rem 0;
-    font-size: 1.5rem;
+  font-family: "Montserrat", sans-serif;
+  color: #30475e;
+  margin: 3rem 0;
+  font-size: 1.5rem;
 }
 
 #about .btn {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
 }
 
 #about .btn:not(:first-child) {
-    margin-left: 1rem;
+  margin-left: 1rem;
 }
 
 #about .btn:not(:last-child) {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 
 @keyframes grow {
-    0% {
-        opacity: 0;
-        transform: scale(0.85);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
   }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
