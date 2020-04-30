@@ -1,59 +1,28 @@
 html {
-    scroll-padding-top: 7rem;
+  line-height: 1.5;
+  box-sizing: border-box;
 }
 
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 #root {
-    font-family: 'Karla', sans-serif;
-    /* font-family: 'Josefin Sans', sans-serif; */
-    width: 100%;
+  font-family: "Karla", sans-serif;
+  /* font-family: 'Josefin Sans', sans-serif; */
+  width: 100%;
 }
 
-#splash {
-    height: 100vh;
-}
-
-#projects, #skills, #contact {
-    padding: 12rem 0;
-}
-
-
-.header {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    padding-right: 1rem;
+#projects,
+#skills,
+#contact {
+  padding: 12rem 0;
 }
 
 .main-column {
-    padding: 0 2rem;
-    width: 100%;
-    max-width: 80rem;
-}
-
-.section {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-
-.flex-center-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.flex-center-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  padding: 0 2rem;
+  width: 100%;
+  max-width: 80rem;
 }

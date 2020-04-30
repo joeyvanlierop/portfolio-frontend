@@ -1,101 +1,173 @@
-import React, { Component } from 'react'
-import { Form, Row, Col, Button } from "react-bootstrap"
-import TextareaAutosize from 'react-textarea-autosize';
+import React, { Component } from "react";
+import TextareaAutosize from "react-textarea-autosize";
+import styled from "styled-components";
+import Button from "./Button";
+import Col from "./Col";
+import Row from "./Row";
+import Section from "./Section";
+
+const StyledInput = styled.input`
+  font-size: 1.25rem;
+  font-family: "Karla", sans-serif;
+  width: 100%;
+  padding: 1rem;
+  padding-left: 0;
+  border: none;
+  resize: none;
+  background-color: transparent;
+  border-bottom: 2px ${(props) => (props.valid ? "black" : "gray")} dotted;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+const Form = styled.form``;
+
+const StyledCol = styled(Col)`
+  padding: 0;
+  margin: 2rem 0;
+
+  &:not(:first-child) {
+    margin-left: 2rem;
+  }
+
+  &:not(:last-child) {
+    margin-right: 2rem;
+  }
+`;
+
+const StyledButton = styled(Button)`
+  color: ${(props) => (props.valid ? "#28a745" : "#dc3545")};
+  border-color: ${(props) => (props.valid ? "#28a745" : "#dc3545")};
+  margin-top: 3rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: white;
+    background-color: ${(props) => (props.valid ? "#28a745" : "#dc3545")};
+  }
+`;
 
 export class Contact extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            name: "",
-            email: "",
-            message: "",
-            valid: false,
-        }
+    this.state = {
+      name: "",
+      email: "",
+      message: "",
+      valid: false,
+    };
+  }
+
+  componentDidUpdate() {
+    this.validateInput();
+  }
+
+  validateInput() {
+    const { name, email, message, valid } = this.state;
+
+    if (name && email && message) {
+      this.setValid(true);
+    } else {
+      this.setValid(false);
     }
-    
-    componentDidUpdate() {
-        this.validateInput()
+  }
+
+  setValid(validity) {
+    const { valid } = this.state;
+
+    if (valid !== validity) {
+      this.setState({ valid: validity });
     }
-    
-    validateInput() {
-        const { name, email, message, valid } = this.state;
+  }
 
-        if (name && email && message) {
-            this.setValid(true)
-        } else {
-            this.setValid(false)
-        }
-    }
+  submitForm(e) {
+    e.preventDefault();
 
-    setValid(validity) {
-        const { valid } = this.state
+    this.setState({
+      buttonText: "...sending",
+    });
 
-        if (valid !== validity) {
-            this.setState({ valid: validity })
-        }
-    }
+    let data = {
+      name: this.state.name,
+      email: this.state.email,
+      message: this.state.message,
+    };
 
-    submitForm(e) {
-        e.preventDefault();
+    console.log(data);
+    this.resetForm();
+    // axios.post('API_URI', data)
+    // .then( res => {
+    //     this.setState({ sent: true }, this.resetForm())
+    // })
+    // .catch( () => {
+    //   console.log('Message not sent')
+    // })
+  }
 
-        this.setState({
-            buttonText: '...sending'
-        });
+  resetForm() {
+    this.setState({
+      name: "",
+      message: "",
+      email: "",
+      valid: false,
+    });
+  }
 
-        let data = {
-            name: this.state.name,
-            email: this.state.email,
-            message: this.state.message
-        };
+  render() {
+    const { name, email, message, valid } = this.state;
 
-        console.log(data);
-        this.resetForm();
-        // axios.post('API_URI', data)
-        // .then( res => {
-        //     this.setState({ sent: true }, this.resetForm())
-        // })
-        // .catch( () => {
-        //   console.log('Message not sent')
-        // })
-    }
-
-    resetForm() {
-        this.setState({
-            name: "",
-            message: "",
-            email: "",
-            valid: false
-        })
-    }
-
-    render() {
-        const { className } = this.props
-        const { name, email, message, valid } = this.state;
-
-        return (
-            <Form className={"contact-form " + (className || "")} onSubmit={(e) => this.submitForm(e)}>
-                <Row>
-                    <Col>
-                        <input onChange={(e) => this.setState({ name: e.target.value })} name={"name"} className={"contact-input " + (name ? "valid" : "")} type={"text"} placeholder={"Name"} required value={name} />
-                    </Col>
-                    <Col>
-                        <input onChange={(e) => this.setState({ email: e.target.value })} name={"email"} className={"contact-input " + (email ? "valid" : "")} type={"email"} placeholder={"Email"} required value={email} />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <TextareaAutosize onChange={(e) => this.setState({ message: e.target.value })} name={"message"} className={"contact-input " + (message ? "valid" : "")} type={"text"} placeholder={"Message"} required value={message} />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className="flex-center-col">
-                        <Button variant={valid ? "outline-success" : "outline-danger"} type="submit" className="button button-primary">{"Send"}</Button>
-                    </Col>
-                </Row>
-            </Form>
-        )
-    }
+    return (
+      <Form className={"main-column"} onSubmit={(e) => this.submitForm(e)}>
+        <Row>
+          <StyledCol>
+            <StyledInput
+              onChange={(e) => this.setState({ name: e.target.value })}
+              name={"name"}
+              valid={name}
+              type={"text"}
+              placeholder={"Name"}
+              required
+              value={name}
+            />
+          </StyledCol>
+          <StyledCol>
+            <StyledInput
+              onChange={(e) => this.setState({ email: e.target.value })}
+              name={"email"}
+              valid={email}
+              type={"email"}
+              placeholder={"Email"}
+              required
+              value={email}
+            />
+          </StyledCol>
+        </Row>
+        <Row>
+          <StyledCol>
+            <StyledInput
+              as={TextareaAutosize}
+              onChange={(e) => this.setState({ message: e.target.value })}
+              name={"message"}
+              valid={message}
+              type={"text"}
+              placeholder={"Message"}
+              required
+              value={message}
+            />
+          </StyledCol>
+        </Row>
+        <Section>
+          <StyledButton fontSize="1.25rem" valid={valid} submit>
+            {"Send"}
+          </StyledButton>
+        </Section>
+      </Form>
+    );
+  }
 }
 
-export default Contact
+export default Contact;
