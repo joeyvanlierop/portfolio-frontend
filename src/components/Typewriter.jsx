@@ -1,4 +1,30 @@
 import React, { Component } from "react";
+import styled, { keyframes } from "styled-components";
+
+const StyledTypewriter = styled.div`
+  display: flex;
+  justify-content: flex-start;
+`;
+
+const BlinkCaret = keyframes`
+  from,
+  to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 100;
+  }
+}`;
+
+const BlinkingCursor = styled.span`
+  overflow: hidden;
+  border-bottom: 0.325rem solid #222831e5;
+  width: 1.75rem;
+  white-space: nowrap;
+  margin-left: 0.2rem;
+  margin-bottom: 1.25rem;
+  animation: ${BlinkCaret} 0.75s step-end infinite;
+`;
 
 export class Typewriter extends Component {
   constructor(props) {
@@ -111,10 +137,10 @@ export class Typewriter extends Component {
     const { className } = this.props;
 
     return (
-      <div className={"typewriter " + (className || "")}>
+      <StyledTypewriter>
         <span>{this.state.text}</span>
-        <span className="blinking-cursor" />
-      </div>
+        <BlinkingCursor />
+      </StyledTypewriter>
     );
   }
 }

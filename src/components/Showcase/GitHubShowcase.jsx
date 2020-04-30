@@ -62,9 +62,8 @@ export class GitHubShowcase extends Component {
 
   render() {
     const { repositories } = this.state;
-    const { className } = this.props;
 
-    return <Showcase className={className || ""} items={repositories} />;
+    return <Showcase items={repositories} />;
   }
 }
 
