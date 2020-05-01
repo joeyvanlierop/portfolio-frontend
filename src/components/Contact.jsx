@@ -3,20 +3,24 @@ import TextareaAutosize from "react-textarea-autosize";
 import styled from "styled-components";
 import Button from "./Button";
 import Col from "./Col";
+import Flex from "./Flex";
 import Row from "./Row";
-import Section from "./Section";
 
 const StyledInput = styled.input`
   font-size: 1.25rem;
-  font-family: "Karla", sans-serif;
+  font-family: ${(props) => props.theme.fonts.form};
   width: 100%;
   padding: 1rem;
   padding-left: 0;
   border: none;
   resize: none;
   background-color: transparent;
-  border-bottom: 2px ${(props) => (props.valid ? "black" : "gray")} dotted;
-  transition: border-color 0.3s ease;
+  opacity: ${(props) => (props.valid ? 1 : 0.5)};
+  color: ${(props) => props.theme.colors.text};
+  border-bottom-color: ${(props) => props.theme.colors.text};
+  border-bottom-style: dotted;
+  border-bottom-width: 2px;
+  transition: opacity 0.3s ease;
 
   &:focus {
     outline: none;
@@ -39,14 +43,17 @@ const StyledCol = styled(Col)`
 `;
 
 const StyledButton = styled(Button)`
-  color: ${(props) => (props.valid ? "#28a745" : "#dc3545")};
-  border-color: ${(props) => (props.valid ? "#28a745" : "#dc3545")};
+  color: ${(props) =>
+    props.valid ? props.theme.colors.valid : props.theme.colors.invalid};
+  border-color: ${(props) =>
+    props.valid ? props.theme.colors.valid : props.theme.colors.invalid};
   margin-top: 3rem;
   transition: all 0.3s ease;
 
   &:hover {
     color: white;
-    background-color: ${(props) => (props.valid ? "#28a745" : "#dc3545")};
+    background-color: ${(props) =>
+      props.valid ? props.theme.colors.valid : props.theme.colors.invalid};
   }
 `;
 
@@ -121,7 +128,7 @@ export class Contact extends Component {
     const { name, email, message, valid } = this.state;
 
     return (
-      <Form className={"main-column"} onSubmit={(e) => this.submitForm(e)}>
+      <Form onSubmit={(e) => this.submitForm(e)}>
         <Row>
           <StyledCol>
             <StyledInput
@@ -160,11 +167,11 @@ export class Contact extends Component {
             />
           </StyledCol>
         </Row>
-        <Section>
+        <Flex>
           <StyledButton fontSize="1.25rem" valid={valid} submit>
             {"Send"}
           </StyledButton>
-        </Section>
+        </Flex>
       </Form>
     );
   }

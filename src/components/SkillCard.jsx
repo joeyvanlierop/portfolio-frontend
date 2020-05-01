@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Col from "./Col";
+import Text from "./Text";
 
 const StyledSkillCard = styled(Col)`
   display: flex;
@@ -8,7 +9,9 @@ const StyledSkillCard = styled(Col)`
   justify-content: space-between;
   padding: 2rem;
   margin: 0.5rem 0;
-  border: 2px black solid;
+  border-width: 2px;
+  border-style: solid;
+  border-color: ${(props) => props.theme.colors.text};
   border-radius: 10px;
 
   &:not(:first-child) {
@@ -20,34 +23,37 @@ const StyledSkillCard = styled(Col)`
   }
 `;
 
-const SkillCardHeader = styled.div``;
-
-const SkillCardTitle = styled.p`
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 1.5rem;
-  margin-top: 0;
-  margin-bottom: 1rem;
-`;
-
-const SkillCardPoints = styled.ul``;
-
-const SkillCardPoint = styled.li``;
-
 export class SkillCard extends Component {
   render() {
     const { title, points } = this.props;
 
     return (
       <StyledSkillCard>
-        <SkillCardHeader>
-          <SkillCardTitle>{title}</SkillCardTitle>
-          <SkillCardPoints>
+        <div>
+          <Text
+            uppercase
+            fontWeight={600}
+            fontFamily={"card"}
+            margin={"0"}
+            marginBottom={"1rem"}
+          >
+            {title}
+          </Text>
+          <ul>
             {points.map((text) => (
-              <SkillCardPoint key={text}>{text}</SkillCardPoint>
+              <li key={text}>
+                <Text
+                  fontWeight={300}
+                  fontFamily={"card"}
+                  fontSize={"1rem"}
+                  margin={"0"}
+                >
+                  {text}
+                </Text>
+              </li>
             ))}
-          </SkillCardPoints>
-        </SkillCardHeader>
+          </ul>
+        </div>
       </StyledSkillCard>
     );
   }

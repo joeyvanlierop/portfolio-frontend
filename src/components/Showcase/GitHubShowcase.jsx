@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Showcase from "./Showcase";
 
+const STORAGE_KEY = "repositoryData";
+
 export class GitHubShowcase extends Component {
   constructor(props) {
     super(props);
-    const DATA_KEY = "repositoryData";
 
     this.state = {
       repositories: [],
@@ -17,13 +18,13 @@ export class GitHubShowcase extends Component {
 
   saveData(data) {
     const jsonData = JSON.stringify(data);
-    sessionStorage.setItem(this.DATA_KEY, jsonData);
+    sessionStorage.setItem(STORAGE_KEY, jsonData);
   }
 
   loadData() {
-    const jsonData = sessionStorage.getItem(this.DATA_KEY);
+    const jsonData = sessionStorage.getItem(STORAGE_KEY);
 
-    if (jsonData === null || jsonData === undefined) {
+    if ([null, undefined].includes(jsonData)) {
       this.fetchRepositories();
     } else {
       const data = JSON.parse(jsonData);

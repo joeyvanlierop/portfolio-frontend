@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { color, typography, space } from "styled-system";
 
 const StyledNavbar = styled.nav`
-  font-family: "Josefin Sans", sans-serif;
   position: fixed;
   top: 0;
   left: 0;
@@ -16,22 +16,22 @@ const StyledNavbar = styled.nav`
   z-index: 999;
   transition: all 0.3s ease;
   box-shadow: ${(props) =>
-    props.flat ? "none" : "0px 5px 35px -10px rgba(0, 0, 0, 0.4)"};
-  background-color: ${(props) => (props.flat ? "transparent" : "white")};
+    props.flat ? "none" : "0px 5px 35px -10px rgba(0, 0, 0, 0.5)"};
+  background-color: ${(props) =>
+    props.flat ? "transparent" : props.theme.colors.background};
 `;
 
 const StyledLink = styled.a`
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: rgba(0, 0, 0, 0.5);
+  ${color}
+  ${typography}
+  ${space}
   text-decoration: none;
   text-transform: uppercase;
-  padding: 2rem;
-  margin: 0 2rem;
-  transition: color 0.3s ease;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
 
   &:hover {
-    color: rgba(0, 0, 0, 0.75);
+    opacity: 0.75;
   }
 `;
 
@@ -81,8 +81,20 @@ export class Navbar extends Component {
   }
 }
 
-Navbar.Link = ({ href, children }) => (
-  <StyledLink href={href}>{children}</StyledLink>
+Navbar.Link = ({ href, children, ...props }) => (
+  <StyledLink href={href} {...props}>
+    {children}
+  </StyledLink>
 );
+
+Navbar.Link.defaultProps = {
+  color: "text",
+  fontFamily: "navbar",
+  fontSize: "1.25rem",
+  fontWeight: "700",
+  marginX: "2rem",
+  marginY: "0",
+  padding: "2rem",
+};
 
 export default Navbar;

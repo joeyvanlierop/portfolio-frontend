@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Badge from "../Badge";
+import Flex from "../Flex";
+import Text from "../Text";
 
 const StyledShowcaseItem = styled.div`
   display: flex;
@@ -12,7 +14,9 @@ const StyledShowcaseItem = styled.div`
   height: 20rem;
   padding: 2rem;
   margin: 1rem 0;
-  border: 2px black solid;
+  border-width: 2px;
+  border-style: solid;
+  border-color: ${(props) => props.theme.colors.text};
   border-radius: 10px;
 
   &:not(:first-child) {
@@ -24,45 +28,38 @@ const StyledShowcaseItem = styled.div`
   }
 `;
 
-const ShowcaseItemHeader = styled.div``;
-
-const ShowcaseItemTitle = styled.p`
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 1.5rem;
-  margin-top: 0;
-`;
-
-const ShowcaseItemDescription = styled.p`
-  margin-top: 0;
-`;
-
-const ShowcaseItemBadges = styled.section`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-`;
-
-const ShowcaseItemBadge = styled(Badge)`
-  margin-top: 0.5rem;
-  margin-right: 0.5rem;
-`;
-
 export class ShowcaseItem extends Component {
   render() {
     const { title, description, badges } = this.props;
 
     return (
       <StyledShowcaseItem>
-        <ShowcaseItemHeader>
-          <ShowcaseItemTitle>{title}</ShowcaseItemTitle>
-          <ShowcaseItemDescription>{description}</ShowcaseItemDescription>
-        </ShowcaseItemHeader>
-        <ShowcaseItemBadges>
+        <div>
+          <Text
+            uppercase
+            fontWeight={600}
+            fontFamily={"card"}
+            margin={"0"}
+            marginBottom={"1.5rem"}
+          >
+            {title}
+          </Text>
+          <Text
+            fontWeight={300}
+            fontFamily={"card"}
+            fontSize={"1rem"}
+            margin={"0"}
+          >
+            {description}
+          </Text>
+        </div>
+        <Flex flexWrap={"wrap"} justifyContent={"flex-start"}>
           {badges.map((text) => (
-            <ShowcaseItemBadge key={text}>{text}</ShowcaseItemBadge>
+            <Badge marginTop={"0.5rem"} marginRight={"0.5rem"} key={text}>
+              {text}
+            </Badge>
           ))}
-        </ShowcaseItemBadges>
+        </Flex>
       </StyledShowcaseItem>
     );
   }

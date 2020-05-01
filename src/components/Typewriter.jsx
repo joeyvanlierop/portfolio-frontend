@@ -4,6 +4,7 @@ import styled, { keyframes } from "styled-components";
 const StyledTypewriter = styled.div`
   display: flex;
   justify-content: flex-start;
+  line-height: normal;
 `;
 
 const BlinkCaret = keyframes`
@@ -18,11 +19,11 @@ const BlinkCaret = keyframes`
 
 const BlinkingCursor = styled.span`
   overflow: hidden;
-  border-bottom: 0.325rem solid #222831e5;
+  border-bottom: 0.325rem solid;
   width: 1.75rem;
   white-space: nowrap;
   margin-left: 0.2rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.75rem;
   animation: ${BlinkCaret} 0.75s step-end infinite;
 `;
 
@@ -138,7 +139,7 @@ export class Typewriter extends Component {
 
     return (
       <StyledTypewriter>
-        <span>{this.state.text}</span>
+        {this.state.text}
         <BlinkingCursor />
       </StyledTypewriter>
     );

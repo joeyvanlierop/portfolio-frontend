@@ -6,19 +6,6 @@ const AboutWrapper = styled.div`
   margin: auto 0;
 `;
 
-const AboutHeader = styled.section`
-  font-size: 3rem;
-  font-weight: 700;
-  padding-right: 1rem;
-`;
-
-const AboutText = styled.p`
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.5rem;
-  color: #30475e;
-  margin: 3rem 0;
-`;
-
 const AboutFooter = styled.section`
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
@@ -51,7 +38,7 @@ const AboutButton = styled(Button)`
 
 const StyledAbout = styled.div`
   color: #222831;
-  border-left: 2px dotted #30475e;
+  border-left: 2px dotted ${(props) => props.theme.colors.text};
   margin: 0;
   padding: 0 2rem;
   animation: 1s ease-out 0s 1 ${Grow};
@@ -59,19 +46,15 @@ const StyledAbout = styled.div`
 
 export class About extends Component {
   render() {
-    const { children } = this.props;
+    const { className, children } = this.props;
 
     return (
-      <AboutWrapper className={"main-column"}>
+      <AboutWrapper className={className}>
         <StyledAbout id={"about"}>{children}</StyledAbout>
       </AboutWrapper>
     );
   }
 }
-
-About.Header = ({ children }) => <AboutHeader>{children}</AboutHeader>;
-
-About.Body = ({ children }) => <AboutText>{children}</AboutText>;
 
 About.Footer = ({ children }) => <AboutFooter>{children}</AboutFooter>;
 

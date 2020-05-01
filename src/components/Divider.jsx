@@ -15,7 +15,7 @@ const StyledDivider = styled.hr`
   padding: 0;
   width: 20%;
   border: none;
-  border-bottom: 2px dotted #30475e;
+  border-bottom: 2px dotted ${(props) => props.theme.colors.text};
 `;
 
 export class Divider extends Component {

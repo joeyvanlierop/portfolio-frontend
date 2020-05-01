@@ -4,17 +4,9 @@ import styled from "styled-components";
 const StyledSection = styled.section`
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
-`;
-
-const SectionHeader = styled.section`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  font-size: 3rem;
-  font-weight: 700;
-  padding-right: 1rem;
-  margin-bottom: 1rem;
+  padding: 12rem 0;
 `;
 
 export class Section extends Component {
@@ -28,9 +20,5 @@ export class Section extends Component {
     );
   }
 }
-
-Section.Header = ({ children }) => (
-  <SectionHeader className="main-column">{children}</SectionHeader>
-);
 
 export default Section;

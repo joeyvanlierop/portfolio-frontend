@@ -1,31 +1,26 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { color, typography, space, border } from "styled-system";
 
 const StyledButton = styled.a`
-  font-size: ${(props) => {
-    return props.fontSize || "1rem";
-  }};
-  font-weight: ${(props) => {
-    return props.fontWeight || "500";
-  }};
-  font-family: Karla, sans-serif;
+  ${color}
+  ${typography}
+  ${space}
+  ${border}
   line-height: 1.5;
   text-decoration: none;
   display: inline-block;
-  color: #343a40;
   background-color: transparent;
-  border: ${(props) => props.borderSize || "1px"} solid;
-  border-color: #343a40;
+  border-style: solid;
   border-radius: 0.25rem;
-  cursor: pointer;
   user-select: none;
   padding: 0.375rem 0.75rem;
-  margin: ${(props) => props.marginY || "0"} ${(props) => props.marginX || "0"};
   transition: all 0.15s ease-in-out;
+  cursor: pointer;
 
   &:hover {
-    color: white;
-    background-color: #343a40;
+    color: ${(props) => props.theme.colors.background};
+    background-color: ${(props) => props.theme.colors.text};
   }
 
   &:focus {
@@ -49,5 +44,16 @@ export class Button extends Component {
     );
   }
 }
+
+Button.defaultProps = {
+  fontFamily: "button",
+  fontSize: "1rem",
+  fontWeight: "500",
+  marginX: "0",
+  marginY: "0",
+  borderWidth: "1px",
+  borderColor: "text",
+  color: "text",
+};
 
 export default Button;

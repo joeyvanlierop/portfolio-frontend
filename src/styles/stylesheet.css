@@ -8,21 +8,3 @@ html {
 *:after {
   box-sizing: inherit;
 }
-
-#root {
-  font-family: "Karla", sans-serif;
-  /* font-family: 'Josefin Sans', sans-serif; */
-  width: 100%;
-}
-
-#projects,
-#skills,
-#contact {
-  padding: 12rem 0;
-}
-
-.main-column {
-  padding: 0 2rem;
-  width: 100%;
-  max-width: 80rem;
-}

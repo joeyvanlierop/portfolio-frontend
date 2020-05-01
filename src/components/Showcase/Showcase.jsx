@@ -1,13 +1,8 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import ShowcaseItem from "./ShowcaseItem";
-
-const ShowcaseRow = styled.section`
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  width: 100%;
-`;
+import Container from "../Container";
+import Row from "../Row";
 
 const ShowcaseButton = styled.button`
   padding: 0 2rem;
@@ -20,12 +15,14 @@ const ShowcaseButton = styled.button`
 
 const ShowcaseButtonIcon = styled.span`
   font-size: 3rem;
+  color: ${(props) => props.theme.colors.text};
 `;
 
 const ShowcaseWrapper = styled.div`
   position: relative;
   width: 90%;
   flex-direction: row;
+  align-items: center;
   justify-content: center;
   overflow: hidden;
   flex: 1;
@@ -37,8 +34,16 @@ const ShowcaseWrapper = styled.div`
     height: 100%;
     left: 0;
     top: 0;
-    background: -webkit-linear-gradient(right, transparent, #ffffff);
-    background: linear-gradient(right, transparent, #ffffff);
+    background: -webkit-linear-gradient(
+      right,
+      transparent,
+      ${(props) => props.theme.colors.background}
+    );
+    background: linear-gradient(
+      right,
+      transparent,
+      ${(props) => props.theme.colors.background}
+    );
     z-index: 1;
   }
 
@@ -49,8 +54,16 @@ const ShowcaseWrapper = styled.div`
     height: 100%;
     right: 0;
     top: 0;
-    background: -webkit-linear-gradient(left, transparent, #ffffff);
-    background: linear-gradient(left, transparent, #ffffff);
+    background: -webkit-linear-gradient(
+      left,
+      transparent,
+      ${(props) => props.theme.colors.background}
+    );
+    background: linear-gradient(
+      left,
+      transparent,
+      ${(props) => props.theme.colors.background}
+    );
     z-index: 1;
   }
 `;
@@ -70,7 +83,6 @@ export class Showcase extends Component {
 
     this.addOffset = this.addOffset.bind(this);
     this.stopScroll = this.stopScroll.bind(this);
-    this.myInput = React.createRef();
     this.timer = null;
 
     this.state = {
@@ -96,7 +108,7 @@ export class Showcase extends Component {
     const { items } = this.props;
 
     return (
-      <ShowcaseRow>
+      <Row>
         <ShowcaseButton
           onMouseDown={() => this.addOffset(10)}
           onMouseUp={this.stopScroll}
@@ -105,12 +117,14 @@ export class Showcase extends Component {
             chevron_left
           </ShowcaseButtonIcon>
         </ShowcaseButton>
-        <ShowcaseWrapper ref={this.myInput}>
-          <StyledShowcase className="main-column" offset={offset}>
-            {items.map((item) => (
-              <ShowcaseItem key={item.title} {...item} />
-            ))}
-          </StyledShowcase>
+        <ShowcaseWrapper>
+          <Container>
+            <StyledShowcase offset={offset}>
+              {items.map((item) => (
+                <ShowcaseItem key={item.title} {...item} />
+              ))}
+            </StyledShowcase>
+          </Container>
         </ShowcaseWrapper>
         <ShowcaseButton
           onMouseDown={() => this.addOffset(-10)}
@@ -120,7 +134,7 @@ export class Showcase extends Component {
             chevron_right
           </ShowcaseButtonIcon>
         </ShowcaseButton>
-      </ShowcaseRow>
+      </Row>
     );
   }
 }
