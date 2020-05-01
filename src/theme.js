@@ -29,6 +29,7 @@ const fonts = {
   button: "Karla, sans-serif",
   card: "Karla, sans-serif",
   form: "Karla, sans-serif",
+  badge: "Karla, sans-serif",
   body: "Montserrat, sans-serif",
   navbar: "Josefin Sans, sans-serif",
 };

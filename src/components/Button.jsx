@@ -28,21 +28,17 @@ const StyledButton = styled.a`
   }
 `;
 
-export class Button extends Component {
-  render() {
-    const { href, className, children, submit } = this.props;
-
-    return (
-      <StyledButton
-        as={submit ? "button" : ""}
-        href={href}
-        className={className}
-        {...this.props}
-      >
-        {children}
-      </StyledButton>
-    );
-  }
+export function Button(props) {
+  return (
+    <StyledButton
+      as={props.submit ? "button" : ""}
+      href={props.href}
+      className={props.className}
+      {...props}
+    >
+      {props.children}
+    </StyledButton>
+  );
 }
 
 Button.defaultProps = {

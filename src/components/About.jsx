@@ -41,7 +41,9 @@ const StyledAbout = styled.div`
   border-left: 2px dotted ${(props) => props.theme.colors.text};
   margin: 0;
   padding: 0 2rem;
-  animation: 1s ease-out 0s 1 ${Grow};
+  opacity: 1;
+  transform: scale(1);
+  animation: 2s ease-out 0s 1 ${Grow};
 `;
 
 export class About extends Component {
