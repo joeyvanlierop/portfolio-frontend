@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { color, typography, space } from "styled-system";
+import { color, space, typography } from "styled-system";
 
 const StyledNavbar = styled.nav`
   position: fixed;
@@ -35,50 +35,31 @@ const StyledLink = styled.a`
   }
 `;
 
-export class Navbar extends Component {
-  constructor(props) {
-    super(props);
+export function Navbar({ children }) {
+  const [scrolled, setScrolled] = useState(false);
 
-    this.state = {
-      isScrolled: false,
-    };
-  }
-
-  componentDidMount() {
-    window.addEventListener("scroll", () => {
-      this.handleScroll();
-    });
-  }
-
-  // Determines if the current window is scrolled down
-  handleScroll() {
-    const { isScrolled } = this.state;
-
-    if (window.pageYOffset > 10 && !isScrolled) {
-      this.setScrolled(true);
-    } else if (window.pageYOffset <= 10 && isScrolled) {
-      this.setScrolled(false);
+  useEffect(() => {
+    // Determines if the current window is scrolled down
+    function onScroll() {
+      if (window.pageYOffset > 10) {
+        updateScrolled(true);
+      } else if (window.pageYOffset <= 10) {
+        updateScrolled(false);
+      }
     }
-  }
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrolled]);
 
   // Updates the scrolled state
-  setScrolled(scrolled) {
-    const { isScrolled } = this.state;
-
-    if (isScrolled != scrolled) {
-      this.setState({
-        isScrolled: scrolled,
-      });
+  function updateScrolled(newScrolled) {
+    if (scrolled != newScrolled) {
+      setScrolled(newScrolled);
     }
   }
 
-  render() {
-    const { isScrolled } = this.state;
-
-    return (
-      <StyledNavbar flat={!isScrolled}>{this.props.children}</StyledNavbar>
-    );
-  }
+  return <StyledNavbar flat={!scrolled}>{children}</StyledNavbar>;
 }
 
 Navbar.Link = ({ href, children, ...props }) => (

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
 
 const StyledBackground = styled.div`
@@ -31,17 +31,13 @@ const Vignette = styled.div`
   animation: 3s ease-in-out ${Fade};
 `;
 
-export class Background extends Component {
-  render() {
-    const { children } = this.props;
-
-    return (
-      <StyledBackground>
-        <Vignette />
-        {children}
-      </StyledBackground>
-    );
-  }
+export function Background({ children }) {
+  return (
+    <StyledBackground>
+      <Vignette />
+      {children}
+    </StyledBackground>
+  );
 }
 
 export default Background;

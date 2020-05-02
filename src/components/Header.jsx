@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const StyledHeader = styled.section`
@@ -12,12 +12,8 @@ const StyledHeader = styled.section`
   color: ${(props) => props.theme.colors.text};
 `;
 
-export class Header extends Component {
-  render() {
-    const { children } = this.props;
-
-    return <StyledHeader>{children}</StyledHeader>;
-  }
+export function Header({ children }) {
+  return <StyledHeader>{children}</StyledHeader>;
 }
 
 export default Header;

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import Badge from "../Badge";
 import Flex from "../Flex";
@@ -28,41 +28,37 @@ const StyledShowcaseItem = styled.div`
   }
 `;
 
-export class ShowcaseItem extends Component {
-  render() {
-    const { title, description, badges } = this.props;
-
-    return (
-      <StyledShowcaseItem>
-        <div>
-          <Text
-            uppercase
-            fontWeight={600}
-            fontFamily={"card"}
-            margin={"0"}
-            marginBottom={"1.5rem"}
-          >
-            {title}
-          </Text>
-          <Text
-            fontWeight={300}
-            fontFamily={"card"}
-            fontSize={"1rem"}
-            margin={"0"}
-          >
-            {description}
-          </Text>
-        </div>
-        <Flex flexWrap={"wrap"} justifyContent={"flex-start"}>
-          {badges.map((text) => (
-            <Badge marginTop={"0.5rem"} marginRight={"0.5rem"} key={text}>
-              {text}
-            </Badge>
-          ))}
-        </Flex>
-      </StyledShowcaseItem>
-    );
-  }
+export function ShowcaseItem({ title, description, badges }) {
+  return (
+    <StyledShowcaseItem>
+      <div>
+        <Text
+          uppercase
+          fontWeight={600}
+          fontFamily={"card"}
+          margin={"0"}
+          marginBottom={"1.5rem"}
+        >
+          {title}
+        </Text>
+        <Text
+          fontWeight={300}
+          fontFamily={"card"}
+          fontSize={"1rem"}
+          margin={"0"}
+        >
+          {description}
+        </Text>
+      </div>
+      <Flex flexWrap={"wrap"} justifyContent={"flex-start"}>
+        {badges.map((text) => (
+          <Badge marginTop={"0.5rem"} marginRight={"0.5rem"} key={text}>
+            {text}
+          </Badge>
+        ))}
+      </Flex>
+    </StyledShowcaseItem>
+  );
 }
 
 ShowcaseItem.defaultProps = {

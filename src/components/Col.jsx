@@ -8,11 +8,8 @@ const StyledCol = styled.div`
   flex: 1;
 `;
 
-export class Col extends Component {
-  render() {
-    const { className, children } = this.props;
-    return <StyledCol className={className}>{children}</StyledCol>;
-  }
+export function Col({ children, className }) {
+  return <StyledCol className={className}>{children}</StyledCol>;
 }
 
 export default Col;

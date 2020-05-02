@@ -23,40 +23,36 @@ const StyledSkillCard = styled(Col)`
   }
 `;
 
-export class SkillCard extends Component {
-  render() {
-    const { title, points } = this.props;
-
-    return (
-      <StyledSkillCard>
-        <div>
-          <Text
-            uppercase
-            fontWeight={600}
-            fontFamily={"card"}
-            margin={"0"}
-            marginBottom={"1rem"}
-          >
-            {title}
-          </Text>
-          <ul>
-            {points.map((text) => (
-              <li key={text}>
-                <Text
-                  fontWeight={300}
-                  fontFamily={"card"}
-                  fontSize={"1rem"}
-                  margin={"0"}
-                >
-                  {text}
-                </Text>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </StyledSkillCard>
-    );
-  }
+export function SkillCard({ title, points }) {
+  return (
+    <StyledSkillCard>
+      <div>
+        <Text
+          uppercase
+          fontWeight={600}
+          fontFamily={"card"}
+          margin={"0"}
+          marginBottom={"1rem"}
+        >
+          {title}
+        </Text>
+        <ul>
+          {points.map((text) => (
+            <li key={text}>
+              <Text
+                fontWeight={300}
+                fontFamily={"card"}
+                fontSize={"1rem"}
+                margin={"0"}
+              >
+                {text}
+              </Text>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </StyledSkillCard>
+  );
 }
 
 export default SkillCard;

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import { flexbox } from "styled-system";
 
@@ -7,11 +7,8 @@ const StyledFlex = styled.div`
   display: flex;
 `;
 
-export class Flex extends Component {
-  render() {
-    const { children } = this.props;
-    return <StyledFlex {...this.props}>{children}</StyledFlex>;
-  }
+export function Flex({ children, ...props }) {
+  return <StyledFlex {...props}>{children}</StyledFlex>;
 }
 
 Flex.defaultProps = {

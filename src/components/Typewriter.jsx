@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 
 const StyledTypewriter = styled.div`
@@ -27,123 +27,93 @@ const BlinkingCursor = styled.span`
   animation: ${BlinkCaret} 0.75s step-end infinite;
 `;
 
-export class Typewriter extends Component {
-  constructor(props) {
-    super(props);
+export function Typewriter({
+  phrases,
+  prefix,
+  writeSpeed,
+  writeTimeout,
+  deleteSpeed,
+  deleteTimeout,
+  loop,
+}) {
+  const [text, setText] = useState("");
+  const [stopped, setStopped] = useState(false);
+  const [prefixed, setPrefixed] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [updated, setUpdated] = useState(true);
+  const [prefixIndex, setPrefixIndex] = useState(0);
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [letterIndex, setLetterIndex] = useState(0);
+  const [waitTime, setWaitTime] = useState(0);
+  const phrase = phrases[phraseIndex];
 
-    this.state = {
-      text: "",
-      isStopped: false,
-      isPrefixed: false,
-      isDeleting: false,
-      prefixIndex: 0,
-      wordIndex: 0,
-      letterIndex: 0,
-      waitTime: 0,
-    };
-  }
-
-  componentDidMount() {
-    this.updateWord();
-  }
-
-  componentDidUpdate(prevState) {
-    const { isStopped } = this.state;
-
-    if (prevState.isStopped === true && isStopped === false) {
-      this.updateWord();
+  useEffect(() => {
+    if (updated) {
+      setUpdated(false);
+      setTimeout(() => {
+        updatePhrase();
+      }, waitTime);
     }
-  }
+  });
 
-  updateWord() {
-    const { isStopped, isPrefixed, isDeleting, waitTime } = this.state;
-
-    if (isStopped) {
+  function updatePhrase() {
+    if (stopped) {
       return;
-    } else if (!isPrefixed) {
-      this.writePrefix();
-    } else if (!isDeleting) {
-      this.writeWord();
-    } else {
-      this.deleteWord();
     }
 
-    setTimeout(() => {
-      this.updateWord();
-    }, waitTime);
+    if (!prefixed) {
+      writePrefix();
+    } else if (!deleting) {
+      writePhrase();
+    } else {
+      deletePhrase();
+    }
+
+    setUpdated(true);
   }
 
-  writePrefix() {
-    const { prefix, writeSpeed } = this.props;
-    const { prefixIndex } = this.state;
-
+  function writePrefix() {
     if (prefixIndex < prefix.length) {
-      this.setState({
-        text: prefix.substring(0, prefixIndex),
-        prefixIndex: prefixIndex + 1,
-        waitTime: writeSpeed,
-      });
+      setText(prefix.substring(0, prefixIndex));
+      setPrefixIndex(prefixIndex + 1);
+      setWaitTime(writeSpeed);
     } else {
-      this.setState({
-        isPrefixed: true,
-      });
+      setPrefixed(true);
     }
   }
 
-  writeWord() {
-    const { prefix, words, writeSpeed, writeTimeout, loop } = this.props;
-    const { wordIndex, letterIndex } = this.state;
-    const word = words[wordIndex];
-
-    if (letterIndex <= word.length) {
-      this.setState({
-        text: prefix + word.substring(0, letterIndex),
-        letterIndex: letterIndex + 1,
-        waitTime: writeSpeed,
-      });
-    } else if (wordIndex === words.length - 1 && !loop) {
-      this.setState({
-        isStopped: true,
-      });
+  function writePhrase() {
+    if (letterIndex <= phrase.length) {
+      setText(prefix + phrase.substring(0, letterIndex));
+      setLetterIndex(letterIndex + 1);
+      setWaitTime(writeSpeed);
+    } else if (phraseIndex === phrases.length - 1 && !loop) {
+      setStopped(true);
     } else {
-      this.setState({
-        isDeleting: true,
-        waitTime: writeTimeout,
-      });
+      setDeleting(true);
+      setWaitTime(writeTimeout);
     }
   }
 
-  deleteWord() {
-    const { prefix, words, deleteSpeed, deleteTimeout } = this.props;
-    const { wordIndex, letterIndex } = this.state;
-    const word = words[wordIndex];
-
+  function deletePhrase() {
     if (letterIndex > 0) {
-      this.setState({
-        text: prefix + word.substring(0, letterIndex),
-        letterIndex: letterIndex - 1,
-        waitTime: deleteSpeed,
-      });
+      setText(prefix + phrase.substring(0, letterIndex));
+      setLetterIndex(letterIndex - 1);
+      setWaitTime(deleteSpeed);
     } else {
-      this.setState({
-        text: prefix,
-        isDeleting: false,
-        wordIndex: (wordIndex + 1) % words.length,
-        waitTime: deleteTimeout,
-      });
+      setText(prefix);
+      setDeleting(false);
+      setPhraseIndex((phraseIndex + 1) % phrases.length);
+      setWaitTime(deleteTimeout);
     }
   }
 
-  render() {
-    const { className } = this.props;
-
-    return (
-      <StyledTypewriter>
-        {this.state.text}
-        <BlinkingCursor />
-      </StyledTypewriter>
-    );
-  }
+  return (
+    <StyledTypewriter>
+      {text}
+      <BlinkingCursor />
+    </StyledTypewriter>
+  );
 }
 
 Typewriter.defaultProps = {

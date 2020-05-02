@@ -1,6 +1,6 @@
 import get from "lodash.get";
 import merge from "lodash.merge";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "../theme";
 

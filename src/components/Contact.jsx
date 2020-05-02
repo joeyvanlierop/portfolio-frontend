@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import styled from "styled-components";
 import Button from "./Button";
@@ -26,8 +26,6 @@ const StyledInput = styled.input`
     outline: none;
   }
 `;
-
-const Form = styled.form``;
 
 const StyledCol = styled(Col)`
   padding: 0;
@@ -57,55 +55,41 @@ const StyledButton = styled(Button)`
   }
 `;
 
-export class Contact extends Component {
-  constructor(props) {
-    super(props);
+export function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [valid, setValid] = useState(false);
 
-    this.state = {
-      name: "",
-      email: "",
-      message: "",
-      valid: false,
-    };
-  }
+  useEffect(() => {
+    validateInput();
+  });
 
-  componentDidUpdate() {
-    this.validateInput();
-  }
-
-  validateInput() {
-    const { name, email, message, valid } = this.state;
-
+  function validateInput() {
     if (name && email && message) {
-      this.setValid(true);
+      updateValid(true);
     } else {
-      this.setValid(false);
+      updateValid(false);
     }
   }
 
-  setValid(validity) {
-    const { valid } = this.state;
-
-    if (valid !== validity) {
-      this.setState({ valid: validity });
+  function updateValid(newValid) {
+    if (newValid !== valid) {
+      setValid(newValid);
     }
   }
 
-  submitForm(e) {
+  function submitForm(e) {
     e.preventDefault();
 
-    this.setState({
-      buttonText: "...sending",
-    });
-
     let data = {
-      name: this.state.name,
-      email: this.state.email,
-      message: this.state.message,
+      name: name,
+      email: email,
+      message: message,
     };
 
     console.log(data);
-    this.resetForm();
+    resetForm();
     // axios.post('API_URI', data)
     // .then( res => {
     //     this.setState({ sent: true }, this.resetForm())
@@ -115,66 +99,60 @@ export class Contact extends Component {
     // })
   }
 
-  resetForm() {
-    this.setState({
-      name: "",
-      message: "",
-      email: "",
-      valid: false,
-    });
+  function resetForm() {
+    setName("");
+    setEmail("");
+    setMessage("");
+    setValid(false);
   }
 
-  render() {
-    const { name, email, message, valid } = this.state;
-
-    return (
-      <Form onSubmit={(e) => this.submitForm(e)}>
-        <Row>
-          <StyledCol>
-            <StyledInput
-              onChange={(e) => this.setState({ name: e.target.value })}
-              name={"name"}
-              valid={name}
-              type={"text"}
-              placeholder={"Name"}
-              required
-              value={name}
-            />
-          </StyledCol>
-          <StyledCol>
-            <StyledInput
-              onChange={(e) => this.setState({ email: e.target.value })}
-              name={"email"}
-              valid={email}
-              type={"email"}
-              placeholder={"Email"}
-              required
-              value={email}
-            />
-          </StyledCol>
-        </Row>
-        <Row>
-          <StyledCol>
-            <StyledInput
-              as={TextareaAutosize}
-              onChange={(e) => this.setState({ message: e.target.value })}
-              name={"message"}
-              valid={message}
-              type={"text"}
-              placeholder={"Message"}
-              required
-              value={message}
-            />
-          </StyledCol>
-        </Row>
-        <Flex>
-          <StyledButton fontSize="1.25rem" valid={valid} submit>
-            {"Send"}
-          </StyledButton>
-        </Flex>
-      </Form>
-    );
-  }
+  return (
+    <form onSubmit={(e) => submitForm(e)}>
+      <Row>
+        <StyledCol>
+          <StyledInput
+            onChange={(e) => setName(e.target.value)}
+            name={"name"}
+            valid={name}
+            type={"text"}
+            placeholder={"Name"}
+            required
+            value={name}
+          />
+        </StyledCol>
+        <StyledCol>
+          <StyledInput
+            onChange={(e) => setEmail(e.target.value)}
+            name={"email"}
+            valid={email}
+            type={"email"}
+            placeholder={"Email"}
+            required
+            value={email}
+          />
+        </StyledCol>
+      </Row>
+      <Row>
+        <StyledCol>
+          <StyledInput
+            as={TextareaAutosize}
+            onChange={(e) => setMessage(e.target.value)}
+            name={"message"}
+            valid={message}
+            type={"text"}
+            placeholder={"Message"}
+            required
+            value={message}
+          />
+        </StyledCol>
+      </Row>
+      <Flex>
+        <StyledButton fontSize="1.25rem" valid={valid} submit>
+          {"Send"}
+        </StyledButton>
+      </Flex>
+    </form>
+  );
 }
 
 export default Contact;

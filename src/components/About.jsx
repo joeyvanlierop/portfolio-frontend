@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
 import Button from "./Button";
 
@@ -46,16 +46,12 @@ const StyledAbout = styled.div`
   animation: 2s ease-out 0s 1 ${Grow};
 `;
 
-export class About extends Component {
-  render() {
-    const { className, children } = this.props;
-
-    return (
-      <AboutWrapper className={className}>
-        <StyledAbout id={"about"}>{children}</StyledAbout>
-      </AboutWrapper>
-    );
-  }
+export function About({ children, ...props }) {
+  return (
+    <AboutWrapper {...props}>
+      <StyledAbout>{children}</StyledAbout>
+    </AboutWrapper>
+  );
 }
 
 About.Footer = ({ children }) => <AboutFooter>{children}</AboutFooter>;

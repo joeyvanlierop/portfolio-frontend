@@ -1,59 +1,51 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import Showcase from "./Showcase";
 
 const STORAGE_KEY = "repositoryData";
 
-export class GitHubShowcase extends Component {
-  constructor(props) {
-    super(props);
+export function GitHubShowcase({ profile }) {
+  const [repositories, setRepositories] = useState([]);
 
-    this.state = {
-      repositories: [],
-    };
-  }
+  useEffect(() => {
+    loadData();
+  }, []);
 
-  componentDidMount() {
-    this.loadData();
-  }
-
-  saveData(data) {
+  function saveData(data) {
     const jsonData = JSON.stringify(data);
     sessionStorage.setItem(STORAGE_KEY, jsonData);
   }
 
-  loadData() {
+  function loadData() {
     const jsonData = sessionStorage.getItem(STORAGE_KEY);
 
     if ([null, undefined].includes(jsonData)) {
-      this.fetchRepositories();
+      fetchRepositories();
     } else {
       const data = JSON.parse(jsonData);
-      this.updateData(data);
+      updateData(data);
     }
   }
 
-  updateData(data) {
-    this.setState({ repositories: data });
+  function updateData(data) {
+    setRepositories(data);
   }
 
-  fetchRepositories() {
-    const { profile } = this.props;
-
+  function fetchRepositories() {
     fetch(`https://api.github.com/users/${profile}/repos`, {
       headers: {
         Accept: "application/vnd.github.mercy-preview+json",
       },
     })
       .then((res) => res.json())
-      .then((data) => this.mapRepositories(data))
+      .then((data) => mapRepositories(data))
       .then((data) => {
-        this.updateData(data);
-        this.saveData(data);
+        updateData(data);
+        saveData(data);
       })
       .catch(console.log);
   }
 
-  mapRepositories(repositories) {
+  function mapRepositories(repositories) {
     return repositories.reverse().map((repository) => ({
       title: repository.name,
       description: repository.description,
@@ -61,11 +53,7 @@ export class GitHubShowcase extends Component {
     }));
   }
 
-  render() {
-    const { repositories } = this.state;
-
-    return <Showcase items={repositories} />;
-  }
+  return <Showcase items={repositories} />;
 }
 
 export default GitHubShowcase;

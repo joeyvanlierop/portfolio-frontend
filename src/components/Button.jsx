@@ -28,15 +28,10 @@ const StyledButton = styled.a`
   }
 `;
 
-export function Button(props) {
+export function Button({ href, submit, children, ...props }) {
   return (
-    <StyledButton
-      as={props.submit ? "button" : ""}
-      href={props.href}
-      className={props.className}
-      {...props}
-    >
-      {props.children}
+    <StyledButton as={submit ? "button" : ""} href={href} {...props}>
+      {children}
     </StyledButton>
   );
 }

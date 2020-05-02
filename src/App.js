@@ -8,7 +8,7 @@ import Container from "./components/Container";
 import Divider from "./components/Divider";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
-import Root, { ThemeContext } from "./components/Root";
+import { ThemeContext } from "./components/Root";
 import Row from "./components/Row";
 import Section from "./components/Section";
 import GitHubShowcase from "./components/Showcase/GitHubShowcase";
@@ -31,13 +31,13 @@ export function App() {
       </Navbar>
       <Splash>
         <Container>
-          <About>
+          <About id="about">
             <Header>
               <Typewriter
                 className="header"
                 prefix={"Hi, I'm "}
                 loop={false}
-                words={[
+                phrases={[
                   "Joey!",
                   "a developer.",
                   "a student.",

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const DividerWrapper = styled.div`
@@ -18,14 +18,12 @@ const StyledDivider = styled.hr`
   border-bottom: 2px dotted ${(props) => props.theme.colors.text};
 `;
 
-export class Divider extends Component {
-  render() {
-    return (
-      <DividerWrapper>
-        <StyledDivider className="divider" />
-      </DividerWrapper>
-    );
-  }
+export function Divider() {
+  return (
+    <DividerWrapper>
+      <StyledDivider className="divider" />
+    </DividerWrapper>
+  );
 }
 
 export default Divider;

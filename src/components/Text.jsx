@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import { color, space, typography } from "styled-system";
 
@@ -9,12 +9,8 @@ const StyledText = styled.p`
   text-transform: ${(props) => (props.uppercase ? "uppercase" : "none")};
 `;
 
-export class Text extends Component {
-  render() {
-    const { children } = this.props;
-
-    return <StyledText {...this.props}>{children}</StyledText>;
-  }
+export function Text({ children, ...props }) {
+  return <StyledText {...props}>{children}</StyledText>;
 }
 
 Text.defaultProps = {

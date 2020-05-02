@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const ContainerWrapper = styled.div`
@@ -14,16 +14,12 @@ const StyledContainer = styled.div`
   max-width: 80rem;
 `;
 
-export class Container extends Component {
-  render() {
-    const { className, children } = this.props;
-
-    return (
-      <ContainerWrapper className={className}>
-        <StyledContainer>{children}</StyledContainer>
-      </ContainerWrapper>
-    );
-  }
+export function Container({ children }) {
+  return (
+    <ContainerWrapper>
+      <StyledContainer>{children}</StyledContainer>
+    </ContainerWrapper>
+  );
 }
 
 export default Container;

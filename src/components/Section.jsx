@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const StyledSection = styled.section`
@@ -9,16 +9,8 @@ const StyledSection = styled.section`
   padding: 12rem 0;
 `;
 
-export class Section extends Component {
-  render() {
-    const { id, className, children } = this.props;
-
-    return (
-      <StyledSection id={id} className={className}>
-        {children}
-      </StyledSection>
-    );
-  }
+export function Section({ children }) {
+  return <StyledSection>{children}</StyledSection>;
 }
 
 export default Section;

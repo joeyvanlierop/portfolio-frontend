@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const StyledRow = styled.div`
@@ -8,11 +8,8 @@ const StyledRow = styled.div`
   width: 100%;
 `;
 
-export class Row extends Component {
-  render() {
-    const { className, children } = this.props;
-    return <StyledRow className={className}>{children}</StyledRow>;
-  }
+export function Row({ className, children }) {
+  return <StyledRow className={className}>{children}</StyledRow>;
 }
 
 export default Row;

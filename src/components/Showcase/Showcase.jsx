@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
-import ShowcaseItem from "./ShowcaseItem";
 import Container from "../Container";
 import Row from "../Row";
+import ShowcaseItem from "./ShowcaseItem";
 
 const ShowcaseButton = styled.button`
   padding: 0 2rem;
@@ -68,75 +68,57 @@ const ShowcaseWrapper = styled.div`
   }
 `;
 
-const StyledShowcase = styled.div`
+const StyledShowcase = styled.div.attrs((props) => ({
+  style: {
+    transform: `translateX(${props.offset}px)`,
+  },
+}))`
   margin: auto;
   display: flex;
   flex-direction: row;
   align-items: center;
   transition: all 0.5s ease-out;
-  transform: translateX(${(props) => props.offset}px);
 `;
 
-export class Showcase extends Component {
-  constructor(props) {
-    super(props);
+export function Showcase({ items }) {
+  const [offset, setOffset] = useState(0);
+  const [timer, setTimer] = useState(null);
 
-    this.addOffset = this.addOffset.bind(this);
-    this.stopScroll = this.stopScroll.bind(this);
-    this.timer = null;
+  const offsetRef = useRef(offset);
+  offsetRef.current = offset;
 
-    this.state = {
-      offset: 0,
-    };
+  function addOffset(amount) {
+    setOffset(Math.min(offsetRef.current + amount, 0));
+    setTimer(setTimeout(addOffset, 10, amount));
   }
 
-  addOffset(amount) {
-    const { offset } = this.state;
-
-    this.setState({
-      offset: Math.min(offset + amount, 0),
-    });
-    this.timer = setTimeout(this.addOffset, 10, amount);
+  function stopScroll() {
+    clearTimeout(timer);
   }
 
-  stopScroll() {
-    clearTimeout(this.timer);
-  }
-
-  render() {
-    const { offset } = this.state;
-    const { items } = this.props;
-
-    return (
-      <Row>
-        <ShowcaseButton
-          onMouseDown={() => this.addOffset(10)}
-          onMouseUp={this.stopScroll}
-        >
-          <ShowcaseButtonIcon className="material-icons">
-            chevron_left
-          </ShowcaseButtonIcon>
-        </ShowcaseButton>
-        <ShowcaseWrapper>
-          <Container>
-            <StyledShowcase offset={offset}>
-              {items.map((item) => (
-                <ShowcaseItem key={item.title} {...item} />
-              ))}
-            </StyledShowcase>
-          </Container>
-        </ShowcaseWrapper>
-        <ShowcaseButton
-          onMouseDown={() => this.addOffset(-10)}
-          onMouseUp={this.stopScroll}
-        >
-          <ShowcaseButtonIcon className="material-icons">
-            chevron_right
-          </ShowcaseButtonIcon>
-        </ShowcaseButton>
-      </Row>
-    );
-  }
+  return (
+    <Row>
+      <ShowcaseButton onMouseDown={() => addOffset(10)} onMouseUp={stopScroll}>
+        <ShowcaseButtonIcon className="material-icons">
+          chevron_left
+        </ShowcaseButtonIcon>
+      </ShowcaseButton>
+      <ShowcaseWrapper>
+        <Container>
+          <StyledShowcase offset={offset}>
+            {items.map((item) => (
+              <ShowcaseItem key={item.title} {...item} />
+            ))}
+          </StyledShowcase>
+        </Container>
+      </ShowcaseWrapper>
+      <ShowcaseButton onMouseDown={() => addOffset(-10)} onMouseUp={stopScroll}>
+        <ShowcaseButtonIcon className="material-icons">
+          chevron_right
+        </ShowcaseButtonIcon>
+      </ShowcaseButton>
+    </Row>
+  );
 }
 
 export default Showcase;
