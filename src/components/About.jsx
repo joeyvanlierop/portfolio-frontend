@@ -43,7 +43,7 @@ const StyledAbout = styled.div`
   padding: 0 2rem;
   opacity: 1;
   transform: scale(1);
-  animation: 2s ease-out 0s 1 ${Grow};
+  animation: 1.5s ease-out ${Grow};
 `;
 
 export function About({ children, ...props }) {

@@ -24,7 +24,7 @@ module.exports = {
    *
    * Enhance debugging by adding meta info for the browser devtools
    */
-  devtool: "eval-source-map",
+  // devtool: "eval-source-map",
 
   /**
    * Plugins

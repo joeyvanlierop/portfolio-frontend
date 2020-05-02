@@ -7,13 +7,11 @@ const StyledBackground = styled.div`
 
 const Fade = keyframes`
   from {
-    opacity: 1;
-    box-shadow: 0 0 300px 100px rgb(0, 0, 0, 0.5) inset;
+    box-shadow: 0 0 300px 50px rgba(0, 0, 0, 0.5) inset;
   }
   
   to {
-    opacity: 0;
-    box-shadow: 0 0 0px 0px rgb(0, 0, 0, 0) inset;
+    box-shadow: 0 0 0px 0px rgba(0, 0, 0, 0) inset;
   }
 `;
 
@@ -25,10 +23,8 @@ const Vignette = styled.div`
   width: 100%;
   height: 100%;
   z-index: 9999;
-  /* opacity: 0;
-  background-color: black; */
   box-shadow: 0 0 0px 0px rgb(0, 0, 0, 0) inset;
-  animation: 3s ease-in-out ${Fade};
+  animation: 1.5s ease-in-out ${Fade};
 `;
 
 export function Background({ children }) {
