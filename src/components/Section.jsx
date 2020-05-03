@@ -9,8 +9,8 @@ const StyledSection = styled.section`
   padding: 12rem 0;
 `;
 
-export function Section({ children }) {
-  return <StyledSection>{children}</StyledSection>;
+export function Section({ children, ...props }) {
+  return <StyledSection {...props}>{children}</StyledSection>;
 }
 
 export default Section;
