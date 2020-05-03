@@ -36,7 +36,7 @@ jobs:
         with:
           name: joeyvanlierop/portfolio/frontend
           registry: docker.pkg.github.com
-          username: ${{ secrets.GITHUB_USERNAME }}
+          username: ${{ secrets.GITHUB_ACTOR }}
           password: ${{ secrets.GITHUB_TOKEN }}
           dockerfile: Dockerfile
           tags: latest
