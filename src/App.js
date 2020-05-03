@@ -38,13 +38,13 @@ export function App() {
                 prefix={"Hi, I'm "}
                 loop={false}
                 phrases={[
-                  "Joey!",
-                  "a developer.",
-                  "a student.",
-                  "a skiier.",
-                  "a cook.",
-                  "running out of ideas.",
-                  "out of ideas.",
+                  ["Joey!"],
+                  ["a developer‍ ", "👨‍💻"],
+                  ["a student ", "🎓"],
+                  ["a skiier ", "🎿"],
+                  ["a cast iron enthusiast ", "🍳"],
+                  ["a scuba diver ", "🤿"],
+                  ["out of ideas..."],
                 ]}
               />
             </Header>

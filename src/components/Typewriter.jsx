@@ -4,7 +4,7 @@ import styled, { keyframes } from "styled-components";
 const StyledTypewriter = styled.div`
   display: flex;
   justify-content: flex-start;
-  line-height: normal;
+  line-height: 1.5;
 `;
 
 const BlinkCaret = keyframes`
@@ -23,7 +23,7 @@ const BlinkingCursor = styled.span`
   width: 1.75rem;
   white-space: nowrap;
   margin-left: 0.2rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
   animation: ${BlinkCaret} 0.75s step-end infinite;
 `;
 
@@ -39,13 +39,13 @@ export function Typewriter({
   const [text, setText] = useState("");
   const [stopped, setStopped] = useState(false);
   const [prefixed, setPrefixed] = useState(false);
+  const [suffixed, setSuffixed] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [updated, setUpdated] = useState(true);
   const [prefixIndex, setPrefixIndex] = useState(0);
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [letterIndex, setLetterIndex] = useState(0);
   const [waitTime, setWaitTime] = useState(0);
-  const phrase = phrases[phraseIndex];
 
   useEffect(() => {
     if (updated) {
@@ -55,6 +55,14 @@ export function Typewriter({
       }, waitTime);
     }
   });
+
+  function getPhrase() {
+    return phrases[phraseIndex][0];
+  }
+
+  function getSuffix() {
+    return phrases[phraseIndex][1];
+  }
 
   function updatePhrase() {
     if (stopped) {
@@ -83,21 +91,23 @@ export function Typewriter({
   }
 
   function writePhrase() {
-    if (letterIndex <= phrase.length) {
-      setText(prefix + phrase.substring(0, letterIndex));
+    if (letterIndex <= getPhrase().length) {
+      setText(prefix + getPhrase().substring(0, letterIndex));
       setLetterIndex(letterIndex + 1);
       setWaitTime(writeSpeed);
     } else if (phraseIndex === phrases.length - 1 && !loop) {
       setStopped(true);
     } else {
       setDeleting(true);
+      setSuffixed(true);
       setWaitTime(writeTimeout);
     }
   }
 
   function deletePhrase() {
     if (letterIndex > 0) {
-      setText(prefix + phrase.substring(0, letterIndex));
+      setSuffixed(false);
+      setText(prefix + getPhrase().substring(0, letterIndex));
       setLetterIndex(letterIndex - 1);
       setWaitTime(deleteSpeed);
     } else {
@@ -111,6 +121,7 @@ export function Typewriter({
   return (
     <StyledTypewriter>
       {text}
+      {suffixed && getSuffix()}
       <BlinkingCursor />
     </StyledTypewriter>
   );
