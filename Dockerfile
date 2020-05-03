@@ -19,7 +19,7 @@ RUN npm run build
 FROM linuxserver/letsencrypt
 
 # Copy the nginx configuration
-COPY nginx.conf /config
+COPY ./config/nginx.conf /config
 
 # Copy the output of the builder
 COPY --from=builder /usr/src/app/dist /config/www

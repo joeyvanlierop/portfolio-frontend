@@ -38,5 +38,3 @@ jobs:
           registry: docker.pkg.github.com
           username: ${{ github.actor }}
           password: ${{ github.token }}
-          dockerfile: Dockerfile
-          tags: latest
