@@ -3,6 +3,7 @@ const colors = {
   background: "#fff",
   primary: "#00f",
   secondary: "#00a",
+  shadow: "rgba(0, 0, 0, 0.5)",
   gray: "#6c757d",
   badge: "#e8e6e3",
   valid: "#28a745",
@@ -11,12 +12,14 @@ const colors = {
     light: {
       text: "#322",
       background: "#fff9f9",
+      shadow: "rgba(0, 0, 0, 0.5)",
       primary: "#c30",
       secondary: "#400",
     },
     dark: {
       text: "#e8e6e3",
       background: "#121212",
+      shadow: "rgba(0, 0, 0, 1)",
       primary: "#0cf",
       secondary: "#f0e",
       gray: "#6c757d",

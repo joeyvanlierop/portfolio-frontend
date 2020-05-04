@@ -16,7 +16,7 @@ const StyledNavbar = styled.nav`
   z-index: 999;
   transition: all 0.3s ease;
   box-shadow: ${(props) =>
-    props.flat ? "none" : "0px 5px 35px -10px rgba(0, 0, 0, 0.5)"};
+    props.flat ? "none" : `0px 5px 35px -10px ${props.theme.colors.shadow}`};
   background-color: ${(props) =>
     props.flat ? "transparent" : props.theme.colors.background};
 `;

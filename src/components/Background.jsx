@@ -2,6 +2,7 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 
 const StyledBackground = styled.div`
+  transition: all 0.3s ease;
   background-color: ${(props) => props.theme.colors.background};
 `;
 
