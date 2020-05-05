@@ -41,7 +41,7 @@ export function App() {
                   ["Joey!"],
                   ["a developer‍ ", "👨‍💻"],
                   ["a student ", "🎓"],
-                  ["a skiier ", "🎿"],
+                  ["a skier ", "🎿"],
                   ["a cast iron enthusiast ", "🍳"],
                   ["a scuba diver ", "🤿"],
                   ["out of ideas..."],
