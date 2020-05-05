@@ -35,16 +35,16 @@ export function App() {
             <Header>
               <Typewriter
                 className="header"
-                prefix={"Hi, I'm "}
+                prefix={"Hi, I'm"}
                 loop={false}
                 phrases={[
-                  ["Joey!"],
-                  ["a developer‍ ", "👨‍💻"],
-                  ["a student ", "🎓"],
-                  ["a skier ", "🎿"],
-                  ["a cast iron enthusiast ", "🍳"],
-                  ["a scuba diver ", "🤿"],
-                  ["out of ideas..."],
+                  [" Joey!"],
+                  [" a developer‍ ", "👨‍💻"],
+                  [" a student ", "🎓"],
+                  [" a skier ", "🎿"],
+                  [" a cast iron enthusiast ", "🍳"],
+                  [" a scuba diver ", "🤿"],
+                  ["..."],
                 ]}
               />
             </Header>
