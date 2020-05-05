@@ -1,5 +1,5 @@
 www.{$URL} {
-    redir {$URL}{uri}
+    redir https://{$URL}{uri}
 }
 
 {$URL} {
