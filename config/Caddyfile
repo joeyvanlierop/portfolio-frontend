@@ -1,1 +1,7 @@
-joeyvanlierop.com:80
+www.{$URL} {
+    redir {$URL}{uri}
+}
+
+{$URL} {
+    tls {$EMAIL}
+}
