@@ -15,14 +15,14 @@ RUN npm install
 # Build the application
 RUN npm run build
 
-# The nginx server, this builds the final image
-FROM linuxserver/letsencrypt
+# The actual server, this builds the final image
+FROM abiosoft/caddy
 
-# Copy the nginx configuration
-COPY ./config/nginx.conf /config
+# Copy the caddy configuration
+COPY ./config/Caddyfile /etc/Caddyfile
 
 # Copy the output of the builder
-COPY --from=builder /usr/src/app/dist /config/www
+COPY --from=builder /usr/src/app/dist /srv
 
 # Inform Docker to listen on port 443 and 80
-EXPOSE 443 80
+EXPOSE 80 443
