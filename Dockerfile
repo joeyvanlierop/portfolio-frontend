@@ -5,8 +5,8 @@ FROM node:alpine AS builder
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-# Copy the package file and source code
-COPY package.json /usr/src/app
+# Copy the package, package-lock, and source code files
+COPY package*.json /usr/src/app
 COPY . ./
 
 # Install dependencies
