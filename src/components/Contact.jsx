@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TextareaAutosize from "react-textarea-autosize";
+import axios from "axios";
 import styled from "styled-components";
 import Button from "./Button";
 import Col from "./Col";
@@ -60,10 +61,11 @@ export function Contact() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [valid, setValid] = useState(false);
+  const [buttonText, setButtonText] = useState("Send");
 
   useEffect(() => {
     validateInput();
-  });
+  }, [name, email, message]);
 
   function validateInput() {
     if (name && email && message) {
@@ -88,22 +90,26 @@ export function Contact() {
       message: message,
     };
 
-    console.log(data);
-    resetForm();
-    // axios.post('API_URI', data)
-    // .then( res => {
-    //     this.setState({ sent: true }, this.resetForm())
-    // })
-    // .catch( () => {
-    //   console.log('Message not sent')
-    // })
+    setButtonText("Sending");
+    axios({
+      method: "POST",
+      url: "http://localhost:3000/send",
+      data: data,
+    }).then((response) => {
+      if (response.data === "Success") {
+        setButtonText("Sent");
+        resetForm();
+      } else if (response.data === "Fail") {
+        setButtonText("Error");
+        setValid(false);
+      }
+    });
   }
 
   function resetForm() {
     setName("");
     setEmail("");
     setMessage("");
-    setValid(false);
   }
 
   return (
@@ -148,7 +154,7 @@ export function Contact() {
       </Row>
       <Flex>
         <StyledButton fontSize="1.25rem" valid={valid} submit>
-          {"Send"}
+          {buttonText}
         </StyledButton>
       </Flex>
     </form>

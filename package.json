@@ -35,6 +35,7 @@
     "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.2",
     "lorem-ipsum": "^2.0.3",
