@@ -16,7 +16,26 @@ module.exports = {
    */
   output: {
     path: path.join(__dirname, "./dist"),
-    filename: "bundle.js",
+    filename: "[name].[contenthash].js",
+  },
+
+  /**
+   * Optimizations
+   *
+   * Optimize the outputted bundle
+   */
+  optimization: {
+    moduleIds: "hashed",
+    runtimeChunk: "single",
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all",
+        },
+      },
+    },
   },
 
   /**
