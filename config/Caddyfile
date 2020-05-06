@@ -5,7 +5,7 @@ www.{$URL} {
 {$URL} {
     tls {$EMAIL}
         
-    proxy /api https://backend:3000 {
+    proxy /api backend:3000 {
         transparent
     }
 }
