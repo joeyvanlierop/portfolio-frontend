@@ -6,7 +6,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Copy the package, package-lock, and source code files
-COPY package*.json /usr/src/app
+COPY package*.json ./
 COPY . ./
 
 # Install dependencies
