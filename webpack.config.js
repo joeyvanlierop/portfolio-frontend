@@ -1,117 +1,131 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
-module.exports = {
-  /**
-   * Entry
-   *
-   * The first place Webpack looks to start building the bundle.
-   */
-  entry: "./src/index.js",
+module.exports = (env, argv) => {
+  return {
+    /**
+     * Entry
+     *
+     * The first place Webpack looks to start building the bundle.
+     */
+    entry: "./src/index.js",
 
-  /**
-   * Output
-   *
-   * Where Webpack outputs the assets and bundles.
-   */
-  output: {
-    path: path.join(__dirname, "./dist"),
-    filename: "[name].[hash].js",
-  },
+    /**
+     * Output
+     *
+     * Where Webpack outputs the assets and bundles.
+     */
+    output: {
+      path: path.join(__dirname, "./dist"),
+      filename: "[name].[hash].js",
+    },
 
-  /**
-   * Optimizations
-   *
-   * Optimize the outputted bundle
-   */
-  optimization: {
-    moduleIds: "hashed",
-    runtimeChunk: "single",
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: "vendors",
-          chunks: "all",
+    /**
+     * Optimizations
+     *
+     * Optimize the outputted bundle
+     */
+    optimization: {
+      moduleIds: "hashed",
+      runtimeChunk: "single",
+      splitChunks: {
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: "vendors",
+            chunks: "all",
+          },
         },
       },
     },
-  },
 
-  /**
-   * Devtool
-   *
-   * Enhance debugging by adding meta info for the browser devtools
-   */
-  // devtool: "eval-source-map",
-
-  /**
-   * Plugins
-   *
-   * Customize the Webpack build process.
-   */
-  plugins: [
     /**
-     * HtmlWebpackPlugin
+     * Devtool
      *
-     * Generates an HTML file from a template.
+     * Enhance debugging by adding meta info for the browser devtools
      */
-    new HtmlWebpackPlugin({
-      template: "src/index.html", // Template file
-      filename: "index.html", // Output file
-    }),
-  ],
+    // devtool: "eval-source-map",
 
-  /**
-   * Module
-   *
-   * Determine how modules within the project are treated.
-   */
-  module: {
-    rules: [
+    /**
+     * Plugins
+     *
+     * Customize the Webpack build process.
+     */
+    plugins: [
       /**
-       * JavaScript
+       * HtmlWebpackPlugin
        *
-       * Use Babel to transpile JavaScript files.
+       * Generates an HTML file from a template.
        */
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: "babel-loader",
-        },
-      },
+      new HtmlWebpackPlugin({
+        template: "src/index.html", // Template file
+        filename: "index.html", // Output file
+      }),
 
       /**
-       * Styles
+       * Dotenv
        *
-       * Inject CSS into the head with source maps.
+       * Allows for .env files to be loaded.
        */
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
-      },
+      new Dotenv({
+        path: `./.env.${
+          argv.mode === "production" ? "production" : "development"
+        }`,
+      }),
     ],
-  },
 
-  /**
-   * Resolve
-   *
-   * Changes how modules are resolved.
-   */
-  resolve: {
-    extensions: ["*", ".js", ".jsx"],
-  },
+    /**
+     * Module
+     *
+     * Determine how modules within the project are treated.
+     */
+    module: {
+      rules: [
+        /**
+         * JavaScript
+         *
+         * Use Babel to transpile JavaScript files.
+         */
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /(node_modules|bower_components)/,
+          use: {
+            loader: "babel-loader",
+          },
+        },
 
-  /**
-   * Webpack Dev Server
-   *
-   * Updates the webpage in realtime
-   */
-  devServer: {
-    host: "192.168.0.8",
-    contentBase: path.join(__dirname, "src"),
-    disableHostCheck: true,
-    watchContentBase: true,
-  },
+        /**
+         * Styles
+         *
+         * Inject CSS into the head with source maps.
+         */
+        {
+          test: /\.css$/,
+          use: ["style-loader", "css-loader"],
+        },
+      ],
+    },
+
+    /**
+     * Resolve
+     *
+     * Changes how modules are resolved.
+     */
+    resolve: {
+      extensions: ["*", ".js", ".jsx"],
+    },
+
+    /**
+     * Webpack Dev Server
+     *
+     * Updates the webpage in realtime
+     */
+    devServer: {
+      host: "192.168.0.8",
+      contentBase: path.join(__dirname, "src"),
+      disableHostCheck: true,
+      watchContentBase: true,
+    },
+  };
 };

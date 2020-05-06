@@ -93,7 +93,7 @@ export function Contact() {
     setButtonText("Sending");
     axios({
       method: "POST",
-      url: "http://localhost:3000/send",
+      url: process.env.API_URL,
       data: data,
     }).then((response) => {
       if (response.data === "Success") {
@@ -111,6 +111,9 @@ export function Contact() {
     setEmail("");
     setMessage("");
   }
+
+  console.log(process.env.NODE_ENV);
+  console.log(process.env.API_URL);
 
   return (
     <form onSubmit={(e) => submitForm(e)}>

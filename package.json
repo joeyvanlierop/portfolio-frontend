@@ -11,7 +11,8 @@
   },
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot --inline",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "build-dev": "webpack --mode development"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -35,6 +36,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "dotenv-webpack": "^1.7.0",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.2",
     "lorem-ipsum": "^2.0.3",
