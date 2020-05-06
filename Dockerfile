@@ -16,7 +16,7 @@ RUN npm install
 RUN npm run build
 
 # The actual server, this builds the final image
-FROM abiosoft/caddy
+FROM abiosoft/caddy:no-stats
 
 # Copy the caddy configuration
 COPY ./config/Caddyfile /etc/Caddyfile
