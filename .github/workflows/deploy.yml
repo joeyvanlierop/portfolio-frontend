@@ -34,7 +34,7 @@ jobs:
       - name: Publish to Github Packages Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: joeyvanlierop/portfolio/frontend
+          name: joeyvanlierop/portfolio-frontend/frontend
           registry: docker.pkg.github.com
           username: ${{ github.actor }}
           password: ${{ github.token }}
