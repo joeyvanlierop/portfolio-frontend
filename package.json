@@ -1,8 +1,4 @@
 {
-  "name": "web-boilerplate",
-  "version": "1.0.0",
-  "description": "Description",
-  "main": "index.js",
   "babel": {
     "presets": [
       "@babel/preset-env",
@@ -18,23 +14,6 @@
     "build": "webpack --mode production",
     "deploy": "npm run build && gh-pages -d dist"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/username/repository.git"
-  },
-  "keywords": [
-    "npm",
-    "webpack",
-    "babel",
-    "dev-server",
-    "gh-deploy"
-  ],
-  "author": "Author",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/username/repository/issues"
-  },
-  "homepage": "https://github.com/username/repository#readme",
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
