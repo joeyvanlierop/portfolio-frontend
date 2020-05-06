@@ -3,13 +3,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import smoothscroll from "smoothscroll-polyfill";
 import App from "./App";
-import Root from "./components/Root";
+import AppTheme from "./components/AppTheme";
 import "./styles/stylesheet.css";
 
 smoothscroll.polyfill();
 ReactDOM.render(
-  <Root>
+  <AppTheme>
     <App />
-  </Root>,
+  </AppTheme>,
   document.getElementById("root")
 );

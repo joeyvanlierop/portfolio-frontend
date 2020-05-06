@@ -8,7 +8,7 @@ import Container from "./components/Container";
 import Divider from "./components/Divider";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
-import { ThemeContext } from "./components/Root";
+import { ThemeContext } from "./components/AppTheme";
 import Row from "./components/Row";
 import Section from "./components/Section";
 import GitHubShowcase from "./components/Showcase/GitHubShowcase";

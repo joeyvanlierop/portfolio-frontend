@@ -8,7 +8,7 @@ const STORAGE_KEY = "modeData";
 
 export const ThemeContext = React.createContext();
 
-export function Root({ children }) {
+export function AppTheme({ children }) {
   const [mode, setMode] = useState(initializeMode());
 
   function initializeMode() {
@@ -67,4 +67,4 @@ export function Root({ children }) {
   );
 }
 
-export default Root;
+export default AppTheme;
