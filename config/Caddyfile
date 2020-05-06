@@ -4,4 +4,8 @@ www.{$URL} {
 
 {$URL} {
     tls {$EMAIL}
+        
+    proxy /api localhost:3000 {
+        transparent
+    }
 }
