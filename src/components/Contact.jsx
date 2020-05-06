@@ -6,6 +6,7 @@ import Button from "./Button";
 import Col from "./Col";
 import Flex from "./Flex";
 import Row from "./Row";
+import api from "../api";
 
 const StyledInput = styled.input`
   font-size: 1.25rem;
@@ -61,11 +62,16 @@ export function Contact() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [valid, setValid] = useState(false);
+  const [sent, setSent] = useState(false);
   const [buttonText, setButtonText] = useState("Send");
 
   useEffect(() => {
     validateInput();
   }, [name, email, message]);
+
+  useEffect(() => {
+    updateButtonText();
+  }, [sent]);
 
   function validateInput() {
     if (name && email && message) {
@@ -81,6 +87,16 @@ export function Contact() {
     }
   }
 
+  function updateButtonText() {
+    if (sent) {
+      setButtonText("Sent");
+      setValid(true);
+    } else {
+      setButtonText("Send");
+      setValid(false);
+    }
+  }
+
   function submitForm(e) {
     e.preventDefault();
 
@@ -91,19 +107,19 @@ export function Contact() {
     };
 
     setButtonText("Sending");
-    axios({
-      method: "POST",
-      url: process.env.API_URL,
-      data: data,
-    }).then((response) => {
-      if (response.data === "Success") {
-        setButtonText("Sent");
-        resetForm();
-      } else if (response.data === "Fail") {
-        setButtonText("Error");
-        setValid(false);
-      }
-    });
+    api
+      .post("/api/send", {
+        data: data,
+      })
+      .then((response) => {
+        if (response.data === "Success") {
+          resetForm();
+          setSent(true);
+        } else {
+          setButtonText("Error");
+          setValid(false);
+        }
+      });
   }
 
   function resetForm() {
@@ -111,9 +127,6 @@ export function Contact() {
     setEmail("");
     setMessage("");
   }
-
-  console.log(process.env.NODE_ENV);
-  console.log(process.env.API_URL);
 
   return (
     <form onSubmit={(e) => submitForm(e)}>

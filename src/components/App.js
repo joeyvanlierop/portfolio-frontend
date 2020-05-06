@@ -1,21 +1,21 @@
 import { loremIpsum } from "lorem-ipsum";
 import React from "react";
-import About from "./components/About";
-import Background from "./components/Background";
-import Button from "./components/Button";
-import Contact from "./components/Contact";
-import Container from "./components/Container";
-import Divider from "./components/Divider";
-import Header from "./components/Header";
-import Navbar from "./components/Navbar";
-import { ThemeContext } from "./components/AppTheme";
-import Row from "./components/Row";
-import Section from "./components/Section";
-import GitHubShowcase from "./components/Showcase/GitHubShowcase";
-import SkillCard from "./components/SkillCard";
-import Splash from "./components/Splash";
-import Text from "./components/Text";
-import Typewriter from "./components/Typewriter";
+import About from "./About";
+import Background from "./Background";
+import Button from "./Button";
+import Contact from "./Contact";
+import Container from "./Container";
+import Divider from "./Divider";
+import Header from "./Header";
+import Navbar from "./Navbar";
+import { ThemeContext } from "./AppTheme";
+import Row from "./Row";
+import Section from "./Section";
+import GitHubShowcase from "./Showcase/GitHubShowcase";
+import SkillCard from "./SkillCard";
+import Splash from "./Splash";
+import Text from "./Text";
+import Typewriter from "./Typewriter";
 
 const about = loremIpsum({ count: 10 });
 
