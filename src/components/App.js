@@ -20,7 +20,10 @@ import Typewriter from "./Typewriter";
 const about = loremIpsum({ count: 10 });
 
 export function App() {
-  const toggle = React.useContext(ThemeContext);
+  const { toggle, mode } = React.useContext(ThemeContext);
+
+  console.log(toggle);
+  console.log(mode);
 
   return (
     <Background>
@@ -54,7 +57,7 @@ export function App() {
               <About.Button href="#skills">Skills</About.Button>
               <About.Button href="#contact">Contact</About.Button>
               <About.Button inverted onClick={() => toggle()}>
-                Dark
+                {mode === "light" ? "Dark" : "Light"}
               </About.Button>
             </About.Footer>
           </About>

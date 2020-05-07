@@ -61,7 +61,7 @@ export function AppTheme({ children }) {
   }
 
   return (
-    <ThemeContext.Provider value={toggle}>
+    <ThemeContext.Provider value={{ toggle, mode }}>
       <ThemeProvider theme={getTheme(mode)}>{children}</ThemeProvider>
     </ThemeContext.Provider>
   );
