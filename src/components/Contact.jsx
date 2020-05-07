@@ -108,7 +108,7 @@ export function Contact() {
 
     setButtonText("Sending");
     api
-      .post("/api/send", {
+      .post("/send", {
         data: data,
       })
       .then((response) => {
