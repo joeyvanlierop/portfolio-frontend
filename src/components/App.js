@@ -53,7 +53,9 @@ export function App() {
               <About.Button href="#projects">Projects</About.Button>
               <About.Button href="#skills">Skills</About.Button>
               <About.Button href="#contact">Contact</About.Button>
-              <About.Button onClick={() => toggle()}>Dark</About.Button>
+              <About.Button inverted onClick={() => toggle()}>
+                Dark
+              </About.Button>
             </About.Footer>
           </About>
         </Container>
