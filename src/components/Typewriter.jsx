@@ -130,9 +130,9 @@ export function Typewriter({
 Typewriter.defaultProps = {
   prefix: "",
   writeSpeed: 80,
-  writeTimeout: 600,
+  writeTimeout: 500,
   deleteSpeed: 50,
-  deleteTimeout: 400,
+  deleteTimeout: 250,
   loop: true,
 };
 

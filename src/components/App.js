@@ -22,9 +22,6 @@ const about = loremIpsum({ count: 10 });
 export function App() {
   const { toggle, mode } = React.useContext(ThemeContext);
 
-  console.log(toggle);
-  console.log(mode);
-
   return (
     <Background>
       <Navbar id={"top-navbar"}>
@@ -42,11 +39,11 @@ export function App() {
                 loop={false}
                 phrases={[
                   [" Joey!"],
-                  [" a developer‍ ", "👨‍💻"],
-                  [" a student ", "🎓"],
-                  [" a skier ", "🎿"],
-                  [" a cast iron enthusiast ", "🍳"],
-                  [" a scuba diver ", "🤿"],
+                  [" a developer‍", " 👨‍💻"],
+                  [" a student", " 🎓"],
+                  [" a skier", " 🎿"],
+                  [" a cast iron enthusiast", " 🍳"],
+                  [" a scuba diver", " 🤿"],
                   ["..."],
                 ]}
               />
