@@ -22,7 +22,7 @@ FROM abiosoft/caddy:no-stats
 COPY ./config/Caddyfile /etc/Caddyfile
 
 # Copy the output of the builder
-COPY --from=builder /usr/src/app/dist /srv
+COPY --from=builder /usr/src/app/build /srv
 
 # Inform Docker to listen on port 443 and 80
 EXPOSE 80 443
