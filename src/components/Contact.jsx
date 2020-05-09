@@ -114,12 +114,12 @@ export function Contact() {
           setButtonText(BUTTON_TEXT.sent);
         } else {
           setValid(false);
-          setButtonText(BUTTON_TEXT.retry);
+          setButtonText(BUTTON_TEXT.error);
         }
       })
-      .catch((e) => {
+      .catch(() => {
         setValid(false);
-        setButtonText(BUTTON_TEXT.retry);
+        setButtonText(BUTTON_TEXT.error);
       });
   }
 
