@@ -1,8 +1,8 @@
-www.{$URL} {
-    redir https://{$URL}{uri}
+{$URL} {
+    redir https://www.{$URL}{uri}
 }
 
-{$URL} {
+www.{$URL} {
     tls {$EMAIL}
         
     proxy /api backend:3000 {
