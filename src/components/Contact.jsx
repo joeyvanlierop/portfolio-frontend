@@ -90,7 +90,7 @@ function useContactForm(defaultValues, submitCallback) {
 const BUTTON_TEXT = {
   send: "Send",
   sending: "Sending",
-  sent: "Send",
+  sent: "Sent",
   error: "Retry",
 };
 
