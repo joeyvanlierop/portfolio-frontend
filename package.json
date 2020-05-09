@@ -1,9 +1,13 @@
 {
-  "private": true,
+  "name": "portfolio-frontend",
+  "repository": "github:joeyvanlierop/portfolio-frontend",
+  "author": {
+    "name": "Joey Van Lierop",
+    "url": "https://www.joeyvanlierop.com"
+  },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": "react-app"
