@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 
 const StyledTypewriter = styled.div`
@@ -27,6 +27,25 @@ const BlinkingCursor = styled.span`
   animation: ${BlinkCaret} 0.75s step-end infinite;
 `;
 
+// See https://overreacted.io/making-setinterval-declarative-with-react-hooks/ for more information on useInterval
+function useInterval(callback, delay) {
+  const savedCallback = useRef();
+
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  useEffect(() => {
+    function tick() {
+      savedCallback.current();
+    }
+    if (delay !== null) {
+      let id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
+}
+
 export function Typewriter({
   phrases,
   prefix,
@@ -37,24 +56,17 @@ export function Typewriter({
   loop,
 }) {
   const [text, setText] = useState("");
-  const [stopped, setStopped] = useState(false);
   const [prefixed, setPrefixed] = useState(false);
   const [suffixed, setSuffixed] = useState(false);
   const [deleting, setDeleting] = useState(false);
-  const [updated, setUpdated] = useState(true);
   const [prefixIndex, setPrefixIndex] = useState(0);
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [letterIndex, setLetterIndex] = useState(0);
   const [waitTime, setWaitTime] = useState(0);
 
-  useEffect(() => {
-    if (updated) {
-      setUpdated(false);
-      setTimeout(() => {
-        updatePhrase();
-      }, waitTime);
-    }
-  });
+  useInterval(() => {
+    updatePhrase();
+  }, waitTime);
 
   function getPhrase() {
     return phrases[phraseIndex][0];
@@ -65,10 +77,6 @@ export function Typewriter({
   }
 
   function updatePhrase() {
-    if (stopped) {
-      return;
-    }
-
     if (!prefixed) {
       writePrefix();
     } else if (!deleting) {
@@ -76,8 +84,6 @@ export function Typewriter({
     } else {
       deletePhrase();
     }
-
-    setUpdated(true);
   }
 
   function writePrefix() {
@@ -96,7 +102,7 @@ export function Typewriter({
       setLetterIndex(letterIndex + 1);
       setWaitTime(writeSpeed);
     } else if (phraseIndex === phrases.length - 1 && !loop) {
-      setStopped(true);
+      setWaitTime(0);
     } else {
       setDeleting(true);
       setSuffixed(true);

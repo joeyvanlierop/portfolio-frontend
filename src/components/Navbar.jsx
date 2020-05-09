@@ -36,30 +36,23 @@ const StyledLink = styled.a`
 `;
 
 export function Navbar({ children }) {
-  const [scrolled, setScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     // Determines if the current window is scrolled down
     function onScroll() {
       if (window.pageYOffset > 10) {
-        updateScrolled(true);
+        setIsScrolled(true);
       } else if (window.pageYOffset <= 10) {
-        updateScrolled(false);
+        setIsScrolled(false);
       }
     }
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
-  }, [scrolled]);
+  }, [isScrolled]);
 
-  // Updates the scrolled state
-  function updateScrolled(newScrolled) {
-    if (scrolled != newScrolled) {
-      setScrolled(newScrolled);
-    }
-  }
-
-  return <StyledNavbar flat={!scrolled}>{children}</StyledNavbar>;
+  return <StyledNavbar flat={!isScrolled}>{children}</StyledNavbar>;
 }
 
 Navbar.Link = ({ href, children, ...props }) => (

@@ -53,7 +53,7 @@ export function AppTheme({ children }) {
   }
 
   function toggle() {
-    if (mode == "light") {
+    if (mode === "light") {
       updateMode("dark");
     } else {
       updateMode("light");
