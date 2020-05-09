@@ -26,6 +26,17 @@ const StyledInput = styled.input`
   &:focus {
     outline: none;
   }
+
+  /* Hides the yellow background when autofilling an input field */
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    transition: color 9999s ease-out, background-color 9999s ease-out;
+    -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+    transition-delay: 9999s;
+    -webkit-transition-delay: 9999s;
+  }
 `;
 
 const StyledCol = styled(Col)`
@@ -137,6 +148,7 @@ export function Contact() {
             placeholder={"Name"}
             name={"name"}
             type={"text"}
+            spellCheck={false}
             valid={inputs.name}
             value={inputs.name}
             disabled={sent}
@@ -149,6 +161,7 @@ export function Contact() {
             placeholder={"Email"}
             name={"email"}
             type={"email"}
+            spellCheck={false}
             valid={inputs.email}
             value={inputs.email}
             disabled={sent}
