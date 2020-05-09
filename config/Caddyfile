@@ -3,8 +3,8 @@
 }
 
 www.{$URL} {
+    gzip
     tls {$EMAIL}
-        
     proxy /api backend:3000 {
         transparent
     }
