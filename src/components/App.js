@@ -44,7 +44,7 @@ export function App() {
                   [" a skier", " 🎿"],
                   [" a cast iron enthusiast", " 🍳"],
                   [" a scuba diver", " 🤿"],
-                  [" a climer", " 🧗"],
+                  [" a climber", " 🧗"],
                   ["..."],
                 ]}
               />
