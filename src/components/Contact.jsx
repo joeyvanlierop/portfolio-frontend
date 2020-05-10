@@ -111,6 +111,7 @@ export function Contact() {
       .then((response) => {
         if (response.data === "Success") {
           setSent(true);
+          setValid(true);
           setButtonText(BUTTON_TEXT.sent);
         } else {
           setValid(false);
