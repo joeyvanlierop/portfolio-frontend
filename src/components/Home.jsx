@@ -1,14 +1,12 @@
 import { loremIpsum } from "lorem-ipsum";
-import React from "react";
+import React, { Fragment } from "react";
 import About from "./About";
-import Background from "./Background";
+import { ThemeContext } from "./AppTheme";
 import Button from "./Button";
 import Contact from "./Contact";
 import Container from "./Container";
 import Divider from "./Divider";
 import Header from "./Header";
-import Navbar from "./Navbar";
-import { ThemeContext } from "./AppTheme";
 import Row from "./Row";
 import Section from "./Section";
 import GitHubShowcase from "./Showcase/GitHubShowcase";
@@ -23,7 +21,7 @@ export function Home() {
   const { toggle, mode } = React.useContext(ThemeContext);
 
   return (
-    <Background>
+    <Fragment>
       <Splash>
         <Container>
           <About id="about">
@@ -140,7 +138,7 @@ export function Home() {
           <Contact />
         </Container>
       </Section>
-    </Background>
+    </Fragment>
   );
 }
 

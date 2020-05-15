@@ -4,6 +4,8 @@ import styled, { keyframes } from "styled-components";
 const StyledBackground = styled.div`
   transition: all 0.3s ease;
   background-color: ${(props) => props.theme.colors.background};
+  min-height: 100%;
+  flex: 1;
 `;
 
 const Fade = keyframes`
