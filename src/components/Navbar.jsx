@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { color, space, typography } from "styled-system";
 
@@ -21,7 +22,7 @@ const StyledNavbar = styled.nav`
     props.flat ? "transparent" : props.theme.colors.background};
 `;
 
-const StyledLink = styled.a`
+const StyledLink = styled(Link)`
   ${color}
   ${typography}
   ${space}
@@ -55,10 +56,8 @@ export function Navbar({ children }) {
   return <StyledNavbar flat={!isScrolled}>{children}</StyledNavbar>;
 }
 
-Navbar.Link = ({ href, children, ...props }) => (
-  <StyledLink href={href} {...props}>
-    {children}
-  </StyledLink>
+Navbar.Link = ({ children, ...props }) => (
+  <StyledLink {...props}>{children}</StyledLink>
 );
 
 Navbar.Link.defaultProps = {
@@ -66,8 +65,8 @@ Navbar.Link.defaultProps = {
   fontFamily: "navbar",
   fontSize: "1.25rem",
   fontWeight: "700",
-  marginX: "2rem",
-  marginY: "0",
+  mx: "2rem",
+  my: "0",
   padding: "2rem",
 };
 
