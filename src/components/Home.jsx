@@ -19,16 +19,11 @@ import Typewriter from "./Typewriter";
 
 const about = loremIpsum({ count: 10 });
 
-export function App() {
+export function Home() {
   const { toggle, mode } = React.useContext(ThemeContext);
 
   return (
     <Background>
-      <Navbar id={"top-navbar"}>
-        <Navbar.Link href="#">Home</Navbar.Link>
-        <Navbar.Link href="#">Blog</Navbar.Link>
-        <Navbar.Link href="#">Notes</Navbar.Link>
-      </Navbar>
       <Splash>
         <Container>
           <About id="about">
@@ -149,4 +144,4 @@ export function App() {
   );
 }
 
-export default App;
+export default Home;
