@@ -1,13 +1,12 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Background from "./Background";
 import Home from "./Home";
 import Navbar, { NavbarLink } from "./Navbar";
-import Background from "./Background";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Button from "./Button";
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Background>
         <Navbar id={"top-navbar"}>
           <NavbarLink to="/">Home</NavbarLink>
@@ -15,9 +14,9 @@ function App() {
           <NavbarLink to="/notes">Notes</NavbarLink>
         </Navbar>
         <Switch>
-          <Route path={process.env.PUBLIC_URL + "/"} exact component={Home} />
-          <Route path={process.env.PUBLIC_URL + "/blog"} />
-          <Route path={process.env.PUBLIC_URL + "/notes"} />
+          <Route path={"/"} exact component={Home} />
+          <Route path={"/blog"} />
+          <Route path={"/notes"} />
         </Switch>
       </Background>
     </Router>
