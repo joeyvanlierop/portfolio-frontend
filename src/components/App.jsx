@@ -14,7 +14,9 @@ function App() {
           <Navbar.Link to="/notes">Notes</Navbar.Link>
         </Navbar>
         <Switch>
-          <Route path="/" exact component={Home} />
+          <Route path={process.env.PUBLIC_URL + "/"} exact component={Home} />
+          <Route path={process.env.PUBLIC_URL + "/home"} exact />
+          <Route path={process.env.PUBLIC_URL + "/blog"} exact />
         </Switch>
       </Background>
     </Router>
