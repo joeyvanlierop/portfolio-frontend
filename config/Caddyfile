@@ -1,6 +1,3 @@
-tls {$EMAIL}
-
-
 {$URL} {
     redir https://www.{$URL}{uri}
 }
@@ -11,6 +8,7 @@ www.{$URL} {
 }
 
 api.{$URL} {
+    gzip
     tls {$EMAIL}
     proxy / backend:3000 {
         transparent
