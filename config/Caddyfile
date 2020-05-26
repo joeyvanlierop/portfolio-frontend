@@ -7,9 +7,11 @@ tls {$EMAIL}
 
 www.{$URL} {
     gzip
+    tls {$EMAIL}
 }
 
 api.{$URL} {
+    tls {$EMAIL}
     proxy / backend:3000 {
         transparent
     }
