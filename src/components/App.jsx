@@ -3,6 +3,7 @@ import Home from "./Home";
 import Navbar, { NavbarLink } from "./Navbar";
 import Background from "./Background";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Button from "./Button";
 
 function App() {
   return (
@@ -15,8 +16,8 @@ function App() {
         </Navbar>
         <Switch>
           <Route path={process.env.PUBLIC_URL + "/"} exact component={Home} />
-          <Route path={process.env.PUBLIC_URL + "/home"} exact />
-          <Route path={process.env.PUBLIC_URL + "/blog"} exact />
+          <Route path={process.env.PUBLIC_URL + "/blog"} />
+          <Route path={process.env.PUBLIC_URL + "/notes"} />
         </Switch>
       </Background>
     </Router>
