@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { color, space, typography } from "styled-system";
 
@@ -28,7 +28,7 @@ const StyledLink = styled(Link)`
   ${space}
   text-decoration: none;
   text-transform: uppercase;
-  opacity: 0.5;
+  opacity: ${(props) => (props.selected ? 0.75 : 0.5)};
   transition: opacity 0.3s ease;
 
   &:hover {
@@ -56,11 +56,17 @@ export function Navbar({ children }) {
   return <StyledNavbar flat={!isScrolled}>{children}</StyledNavbar>;
 }
 
-Navbar.Link = ({ children, ...props }) => (
-  <StyledLink {...props}>{children}</StyledLink>
-);
+export function NavbarLink({ children, ...props }) {
+  let location = useLocation();
 
-Navbar.Link.defaultProps = {
+  return (
+    <StyledLink selected={location.pathname === props.to} {...props}>
+      {children}
+    </StyledLink>
+  );
+}
+
+NavbarLink.defaultProps = {
   color: "text",
   fontFamily: "navbar",
   fontSize: "1.25rem",

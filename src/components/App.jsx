@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "./Home";
-import Navbar from "./Navbar";
+import Navbar, { NavbarLink } from "./Navbar";
 import Background from "./Background";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -9,9 +9,9 @@ function App() {
     <Router>
       <Background>
         <Navbar id={"top-navbar"}>
-          <Navbar.Link to="/">Home</Navbar.Link>
-          <Navbar.Link to="/blog">Blog</Navbar.Link>
-          <Navbar.Link to="/notes">Notes</Navbar.Link>
+          <NavbarLink to="/">Home</NavbarLink>
+          <NavbarLink to="/blog">Blog</NavbarLink>
+          <NavbarLink to="/notes">Notes</NavbarLink>
         </Navbar>
         <Switch>
           <Route path={process.env.PUBLIC_URL + "/"} exact component={Home} />
