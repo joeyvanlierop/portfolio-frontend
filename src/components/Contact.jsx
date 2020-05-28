@@ -105,7 +105,7 @@ export function Contact() {
     setButtonText("Sending");
 
     api
-      .post(process.env.REACT_APP_CONTACT_ROUTE, {
+      .post(process.env.NEXT_PUBLIC_CONTACT_ROUTE, {
         data: data,
       })
       .then((response) => {
