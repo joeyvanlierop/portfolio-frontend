@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
-import styled, { keyframes } from "styled-components";
+import { keyframes } from "@emotion/core";
+import styled from "@emotion/styled";
+import React, { useEffect, useRef, useState } from "react";
 
 const StyledTypewriter = styled.div`
   display: flex;

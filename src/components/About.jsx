@@ -1,5 +1,6 @@
+import { keyframes } from "@emotion/core";
+import styled from "@emotion/styled";
 import React from "react";
-import styled, { keyframes } from "styled-components";
 import Button from "./Button";
 
 const AboutWrapper = styled.div`
@@ -27,7 +28,7 @@ const Grow = keyframes`
 const AboutButton = styled(Button)`
   font-family: "Montserrat", sans-serif;
 
-  &:not(:first-child) {
+  &:not(:first-of-type) {
     margin-left: 1rem;
   }
 

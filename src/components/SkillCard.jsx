@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Col from "./Col";
 import Text from "./Text";
 
@@ -14,7 +14,7 @@ const StyledSkillCard = styled(Col)`
   border-color: ${({ theme }) => theme.colors.text};
   border-radius: 10px;
 
-  &:not(:first-child) {
+  &:not(:first-of-type) {
     margin-left: 0.5rem;
   }
 

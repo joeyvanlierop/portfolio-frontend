@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Container from "../Container";
 import Row from "../Row";
 import ShowcaseItem from "./ShowcaseItem";
@@ -68,11 +68,7 @@ const ShowcaseWrapper = styled.div`
   }
 `;
 
-const StyledShowcase = styled.div.attrs((props) => ({
-  style: {
-    transform: `translateX(${props.offset}px)`,
-  },
-}))`
+const StyledShowcase = styled.div`
   margin: auto;
   display: flex;
   flex-direction: row;
@@ -105,7 +101,12 @@ export function Showcase({ items }) {
       </ShowcaseButton>
       <ShowcaseWrapper>
         <Container>
-          <StyledShowcase offset={offset}>
+          <StyledShowcase
+            // css={{
+            //   transform: `translateX(${props.offset}px)`,
+            // }}
+            offset={offset}
+          >
             {items.map((item) => (
               <ShowcaseItem key={item.title} {...item} />
             ))}

@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Badge from "../Badge";
 import Flex from "../Flex";
 import Text from "../Text";
@@ -19,7 +19,7 @@ const StyledShowcaseItem = styled.div`
   border-color: ${({ theme }) => theme.colors.text};
   border-radius: 10px;
 
-  &:not(:first-child) {
+  &:not(:first-of-type) {
     margin-left: 0.5rem;
   }
 

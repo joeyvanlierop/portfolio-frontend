@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import api from "../api";
 import Button from "./Button";
 import Col from "./Col";
@@ -43,7 +43,7 @@ const StyledCol = styled(Col)`
   padding: 0;
   margin: 2rem 0;
 
-  &:not(:first-child) {
+  &:not(:first-of-type) {
     margin-left: 2rem;
   }
 

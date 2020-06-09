@@ -1,5 +1,5 @@
 import { loremIpsum } from "lorem-ipsum";
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import About from "../components/About";
 import { ThemeContext } from "../components/AppTheme";
 import Button from "../components/Button";
@@ -18,7 +18,7 @@ import Typewriter from "../components/Typewriter";
 const about = loremIpsum({ count: 10 });
 
 export default function Home() {
-  const { toggle, mode } = React.useContext(ThemeContext);
+  const { toggle, colorMode } = useContext(ThemeContext);
 
   return (
     <Fragment>
@@ -48,7 +48,7 @@ export default function Home() {
               <About.Button href="#skills">Skills</About.Button>
               <About.Button href="#contact">Contact</About.Button>
               <About.Button inverted onClick={() => toggle()}>
-                {mode === "light" ? "Dark" : "Light"}
+                {colorMode === "light" ? "Dark" : "Light"}
               </About.Button>
             </About.Footer>
           </About>
