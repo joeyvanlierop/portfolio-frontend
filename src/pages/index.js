@@ -1,4 +1,3 @@
-import { loremIpsum } from "lorem-ipsum";
 import React, { Fragment, useContext } from "react";
 import About from "../components/About";
 import { ThemeContext } from "../components/AppTheme";
@@ -15,9 +14,7 @@ import Splash from "../components/Splash";
 import Text from "../components/Text";
 import Typewriter from "../components/Typewriter";
 
-const about = loremIpsum({ count: 10 });
-
-export default function Home() {
+export default function Home({ about }) {
   const { toggle, colorMode } = useContext(ThemeContext);
 
   return (
@@ -140,4 +137,14 @@ export default function Home() {
       </Section>
     </Fragment>
   );
+}
+
+export async function getStaticProps() {
+  const about = (await import("../data/about.json")).default;
+
+  return {
+    props: {
+      about: about.text,
+    },
+  };
 }
