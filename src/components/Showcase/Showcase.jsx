@@ -34,12 +34,12 @@ const ShowcaseWrapper = styled.div`
     height: 100%;
     left: 0;
     top: 0;
-    background: -webkit-linear-gradient(
+    background: linear-gradient(
       right,
       transparent,
       ${({ theme }) => theme.colors.background}
     );
-    background: linear-gradient(
+    background: -webkit-linear-gradient(
       right,
       transparent,
       ${({ theme }) => theme.colors.background}
@@ -54,12 +54,12 @@ const ShowcaseWrapper = styled.div`
     height: 100%;
     right: 0;
     top: 0;
-    background: -webkit-linear-gradient(
+    background: linear-gradient(
       left,
       transparent,
       ${({ theme }) => theme.colors.background}
     );
-    background: linear-gradient(
+    background: -webkit-linear-gradient(
       left,
       transparent,
       ${({ theme }) => theme.colors.background}
@@ -69,6 +69,7 @@ const ShowcaseWrapper = styled.div`
 `;
 
 const StyledShowcase = styled.div`
+  transform: translateX(${(props) => props.offset}px);
   margin: auto;
   display: flex;
   flex-direction: row;
@@ -101,12 +102,7 @@ export function Showcase({ items }) {
       </ShowcaseButton>
       <ShowcaseWrapper>
         <Container>
-          <StyledShowcase
-            // css={{
-            //   transform: `translateX(${props.offset}px)`,
-            // }}
-            offset={offset}
-          >
+          <StyledShowcase offset={offset}>
             {items.map((item) => (
               <ShowcaseItem key={item.title} {...item} />
             ))}
