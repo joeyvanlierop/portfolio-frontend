@@ -1,4 +1,5 @@
 export default {
+  initialColorModeName: "light",
   useColorSchemeMediaQuery: true,
   colors: {
     badge: "#e8e6e3",
@@ -15,9 +16,9 @@ export default {
       },
       dark: {
         text: "#e8e6e3",
-        background: "#121212",
+        background: "#0d0d0d",
         shadow: "rgba(0, 0, 0, 1)",
-        primary: "#0cf",
+        primary: "#080808",
         secondary: "#f0e",
         gray: "#6c757d",
       },
@@ -31,5 +32,11 @@ export default {
     badge: "Karla, sans-serif",
     body: "Montserrat, sans-serif",
     navbar: "Josefin Sans, sans-serif",
+  },
+  styles: {
+    root: {
+      backgroundColor: "background",
+      transition: "all 0.3s",
+    },
   },
 };
