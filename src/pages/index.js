@@ -13,6 +13,8 @@ import SkillCard from "../components/SkillCard";
 import Splash from "../components/Splash";
 import Text from "../components/Text";
 import Typewriter from "../components/Typewriter";
+import Footer from "../components/Footer";
+import Col from "../components/Col";
 
 export default function Home({ about }) {
   const { toggle, colorMode } = useContext(ThemeContext);
@@ -26,6 +28,7 @@ export default function Home({ about }) {
               <Typewriter
                 className="header"
                 prefix={"Hi, I'm"}
+                prefixIndex={1}
                 loop={false}
                 phrases={[
                   [" Joey!"],
@@ -135,6 +138,23 @@ export default function Home({ about }) {
           <Contact />
         </Container>
       </Section>
+
+      <Footer>
+        <Container>
+          <Row>
+            <Col>
+              <Text marginY={"2rem"} float={"left"}>
+                {"Copyright or something"}
+              </Text>
+            </Col>
+            <Col>
+              <Text marginY={"2rem"} float={"right"}>
+                {"Copyright or something"}
+              </Text>
+            </Col>
+          </Row>
+        </Container>
+      </Footer>
     </Fragment>
   );
 }

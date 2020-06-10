@@ -25,7 +25,7 @@ const BlinkingCursor = styled.span`
   white-space: nowrap;
   margin-left: 0.2rem;
   margin-bottom: 1.25rem;
-  animation: ${BlinkCaret} 0.75s step-end infinite;
+  animation: ${BlinkCaret} 1s step-end infinite;
 `;
 
 // See https://overreacted.io/making-setinterval-declarative-with-react-hooks/ for more information on useInterval
@@ -55,12 +55,13 @@ export function Typewriter({
   deleteSpeed,
   deleteTimeout,
   loop,
+  ...props
 }) {
   const [text, setText] = useState("");
   const [isPrefixed, setIsPrefixed] = useState(false);
   const [isSuffixed, setIsSuffixed] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [prefixIndex, setPrefixIndex] = useState(0);
+  const [prefixIndex, setPrefixIndex] = useState(props.prefixIndex);
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [letterIndex, setLetterIndex] = useState(0);
   const [waitTime, setWaitTime] = useState(0);
