@@ -1,16 +1,18 @@
+/** @jsx jsx */
 import React from "react";
-import styled from "@emotion/styled";
+import { jsx, css } from "@emotion/core";
 import { color, space, typography } from "styled-system";
 
-const StyledText = styled.p`
-  ${color}
-  ${typography}
-  ${space}
+const TextStyles = css`
   text-transform: ${(props) => (props.uppercase ? "uppercase" : "none")};
 `;
 
 export function Text({ children, ...props }) {
-  return <StyledText {...props}>{children}</StyledText>;
+  return (
+    <text css={TextStyles} {...props}>
+      {children}
+    </text>
+  );
 }
 
 Text.defaultProps = {
