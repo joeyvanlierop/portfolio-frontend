@@ -69,6 +69,7 @@ const ShowcaseWrapper = styled.div`
 `;
 
 const StyledShowcase = styled.div`
+  will-change: transform;
   transform: translateX(${(props) => props.offset}px);
   margin: auto;
   display: flex;
