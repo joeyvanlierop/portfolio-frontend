@@ -3,7 +3,15 @@
   "scripts": {
     "dev": "next dev",
     "start": "next start",
-    "build": "next build && next export"
+    "build": "next build && next export",
+    "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint --fix ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run format"
+    }
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
@@ -13,6 +21,7 @@
     "lodash.merge": "^4.6.2",
     "next": "^9.4.4",
     "normalize.css": "^8.0.1",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-textarea-autosize": "^8.0.1",
@@ -20,6 +29,11 @@
     "theme-ui": "^0.3.1"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.10.7"
+    "eslint": "^7.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.20.0",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5"
   }
 }
