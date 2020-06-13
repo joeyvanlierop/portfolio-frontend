@@ -1,9 +1,9 @@
 import "normalize.css";
+import React, { Fragment } from "react";
 import AppTheme from "../components/AppTheme";
 import Background from "../components/Background";
-import Navbar, { NavbarLink } from "../components/Navbar";
 import GlobalStyle from "../components/GlobalStyle";
-import { Fragment } from "react";
+import Navbar, { NavbarLink } from "../components/Navbar";
 
 export default function MyApp({ Component, pageProps }) {
   return (

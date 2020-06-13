@@ -2,9 +2,11 @@ import React, { Fragment, useContext } from "react";
 import About from "../components/About";
 import { ThemeContext } from "../components/AppTheme";
 import Button from "../components/Button";
+import Col from "../components/Col";
 import Contact from "../components/Contact";
 import Container from "../components/Container";
 import Divider from "../components/Divider";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Row from "../components/Row";
 import Section from "../components/Section";
@@ -13,8 +15,6 @@ import SkillCard from "../components/SkillCard";
 import Splash from "../components/Splash";
 import Text from "../components/Text";
 import Typewriter from "../components/Typewriter";
-import Footer from "../components/Footer";
-import Col from "../components/Col";
 
 export default function Home({ about }) {
   const { toggle, colorMode } = useContext(ThemeContext);

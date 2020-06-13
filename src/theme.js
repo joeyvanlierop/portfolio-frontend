@@ -2,18 +2,16 @@ export default {
   initialColorModeName: "light",
   useColorSchemeMediaQuery: true,
   colors: {
+    text: "#322",
+    background: "#fff9f9",
+    shadow: "rgba(0, 0, 0, 0.5)",
+    primary: "#c30",
+    secondary: "#400",
+    gray: "#6c757d",
     badge: "#e8e6e3",
     valid: "#28a745",
     invalid: "#dc3545",
     modes: {
-      light: {
-        text: "#322",
-        background: "#fff9f9",
-        shadow: "rgba(0, 0, 0, 0.5)",
-        primary: "#c30",
-        secondary: "#400",
-        gray: "#6c757d",
-      },
       dark: {
         text: "#e8e6e3",
         background: "#0d0d0d",
