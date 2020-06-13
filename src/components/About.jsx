@@ -38,7 +38,6 @@ const AboutButton = styled(Button)`
 `;
 
 const StyledAbout = styled.div`
-  color: #222831;
   border-left: 2px dotted ${({ theme }) => theme.colors.text};
   margin: 0;
   padding: 0 2rem;
