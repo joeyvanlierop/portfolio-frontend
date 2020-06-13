@@ -1,8 +1,8 @@
-/** @jsx jsx */
+import React from "react";
 import styled from "@emotion/styled";
-import { jsx, Text } from "theme-ui";
+import { Text } from "theme-ui";
 import Badge from "../Badge";
-import Flex from "../Flex";
+import { Flex } from "theme-ui";
 
 const StyledShowcaseItem = styled.div`
   display: flex;
@@ -53,7 +53,7 @@ export function ShowcaseItem({ title, description, badges }) {
           {description}
         </Text>
       </div>
-      <Flex flexWrap={"wrap"} justifyContent={"flex-start"}>
+      <Flex sx={{ flexWrap: "wrap", justifyContent: "flex-start" }}>
         {badges.map((text) => (
           <Badge marginTop={"0.5rem"} marginRight={"0.5rem"} key={text}>
             {text}
