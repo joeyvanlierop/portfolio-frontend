@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import TextareaAutosize from "react-textarea-autosize";
+/** @jsx jsx */
 import styled from "@emotion/styled";
+import { useEffect, useState } from "react";
+import TextareaAutosize from "react-textarea-autosize";
+import { Flex, Grid, jsx } from "theme-ui";
 import api from "../api";
 import Button from "./Button";
-import Col from "./Col";
-import Flex from "./Flex";
-import Row from "./Row";
 
 const StyledInput = styled.input`
   font-size: 1.25rem;
@@ -36,19 +35,6 @@ const StyledInput = styled.input`
     -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
     transition-delay: 9999s;
     -webkit-transition-delay: 9999s;
-  }
-`;
-
-const StyledCol = styled(Col)`
-  padding: 0;
-  margin: 2rem 0;
-
-  &:not(:first-of-type) {
-    margin-left: 2rem;
-  }
-
-  &:not(:last-child) {
-    margin-right: 2rem;
   }
 `;
 
@@ -142,50 +128,43 @@ export function Contact() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Row>
-        <StyledCol>
-          <StyledInput
-            onChange={handleInputChange}
-            placeholder={"Name"}
-            name={"name"}
-            type={"text"}
-            spellCheck={false}
-            valid={inputs.name}
-            value={inputs.name}
-            disabled={sent}
-            required
-          />
-        </StyledCol>
-        <StyledCol>
-          <StyledInput
-            onChange={handleInputChange}
-            placeholder={"Email"}
-            name={"email"}
-            type={"email"}
-            spellCheck={false}
-            valid={inputs.email}
-            value={inputs.email}
-            disabled={sent}
-            required
-          />
-        </StyledCol>
-      </Row>
-      <Row>
-        <StyledCol>
-          <StyledInput
-            as={TextareaAutosize}
-            onChange={handleInputChange}
-            placeholder={"Message"}
-            name={"message"}
-            type={"text"}
-            valid={inputs.message}
-            value={inputs.message}
-            disabled={sent}
-            required
-          />
-        </StyledCol>
-      </Row>
-      <Flex>
+      <Grid columns={2} gap={"4rem"} sx={{ my: "2rem" }}>
+        <StyledInput
+          onChange={handleInputChange}
+          placeholder={"Name"}
+          name={"name"}
+          type={"text"}
+          spellCheck={false}
+          valid={inputs.name}
+          value={inputs.name}
+          disabled={sent}
+          required
+        />
+        <StyledInput
+          onChange={handleInputChange}
+          placeholder={"Email"}
+          name={"email"}
+          type={"email"}
+          spellCheck={false}
+          valid={inputs.email}
+          value={inputs.email}
+          disabled={sent}
+          required
+        />
+      </Grid>
+
+      <StyledInput
+        as={TextareaAutosize}
+        onChange={handleInputChange}
+        placeholder={"Message"}
+        name={"message"}
+        type={"text"}
+        valid={inputs.message}
+        value={inputs.message}
+        disabled={sent}
+        required
+      />
+      <Flex sx={{ justifyContent: "center" }}>
         <StyledButton fontSize="1.25rem" valid={valid} disabled={sent} submit>
           {buttonText}
         </StyledButton>
