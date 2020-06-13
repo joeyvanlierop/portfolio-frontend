@@ -1,8 +1,8 @@
-import React from "react";
+/** @jsx jsx */
 import styled from "@emotion/styled";
+import { jsx, Text } from "theme-ui";
 import Badge from "../Badge";
 import Flex from "../Flex";
-import Text from "../Text";
 
 const StyledShowcaseItem = styled.div`
   display: flex;
@@ -33,19 +33,22 @@ export function ShowcaseItem({ title, description, badges }) {
     <StyledShowcaseItem>
       <div>
         <Text
-          uppercase
-          fontWeight={600}
-          fontFamily={"card"}
-          margin={"0"}
-          marginBottom={"1.5rem"}
+          variant="uppercase"
+          sx={{
+            fontFamily: "card",
+            margin: "0",
+            marginBottom: "1.5rem",
+          }}
         >
           {title}
         </Text>
         <Text
-          fontWeight={300}
-          fontFamily={"card"}
-          fontSize={"1rem"}
-          margin={"0"}
+          sx={{
+            fontWeight: 300,
+            fontFamily: "card",
+            fontSize: "1rem",
+            margin: "0",
+          }}
         >
           {description}
         </Text>

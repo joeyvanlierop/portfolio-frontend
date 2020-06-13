@@ -14,7 +14,7 @@ export default {
     modes: {
       dark: {
         text: "#e8e6e3",
-        background: "#0d0d0d",
+        background: "rgb(18, 18, 18)",
         shadow: "rgba(0, 0, 0, 1)",
         primary: "#080808",
         secondary: "#f0e",
@@ -30,6 +30,23 @@ export default {
     badge: "Karla, sans-serif",
     body: "Montserrat, sans-serif",
     navbar: "Josefin Sans, sans-serif",
+  },
+  text: {
+    default: {
+      fontFamily: "body",
+      fontSize: 3,
+      color: "text",
+    },
+    about: {
+      fontFamily: "body",
+      fontWeight: 400,
+      fontSize: "1.5rem",
+    },
+    uppercase: {
+      textTransform: "uppercase",
+      fontWeight: 600,
+      fontSize: "1.5rem",
+    },
   },
   styles: {
     root: {

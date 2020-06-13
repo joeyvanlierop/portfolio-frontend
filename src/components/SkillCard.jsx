@@ -1,7 +1,7 @@
-import React from "react";
+/** @jsx jsx */
 import styled from "@emotion/styled";
+import { jsx, Text } from "theme-ui";
 import Col from "./Col";
-import Text from "./Text";
 
 const StyledSkillCard = styled(Col)`
   display: flex;
@@ -28,11 +28,12 @@ export function SkillCard({ title, points }) {
     <StyledSkillCard>
       <div>
         <Text
-          uppercase
-          fontWeight={600}
-          fontFamily={"card"}
-          margin={"0"}
-          marginBottom={"1rem"}
+          variant="uppercase"
+          sx={{
+            fontFamily: "card",
+            margin: "0",
+            marginBottom: "1rem",
+          }}
         >
           {title}
         </Text>
@@ -40,10 +41,12 @@ export function SkillCard({ title, points }) {
           {points.map((text) => (
             <li key={text}>
               <Text
-                fontWeight={300}
-                fontFamily={"card"}
-                fontSize={"1rem"}
-                margin={"0"}
+                sx={{
+                  fontWeight: 300,
+                  fontFamily: "card",
+                  fontSize: "1rem",
+                  margin: "0",
+                }}
               >
                 {text}
               </Text>

@@ -1,19 +1,18 @@
-import React, { Fragment, useContext } from "react";
+/** @jsx jsx */
+import { Fragment, useContext } from "react";
+import { jsx, Text } from "theme-ui";
 import About from "../components/About";
 import { ThemeContext } from "../components/AppTheme";
 import Button from "../components/Button";
-import Col from "../components/Col";
 import Contact from "../components/Contact";
 import Container from "../components/Container";
 import Divider from "../components/Divider";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Row from "../components/Row";
 import Section from "../components/Section";
 import GitHubShowcase from "../components/Showcase/GitHubShowcase";
 import SkillCard from "../components/SkillCard";
 import Splash from "../components/Splash";
-import Text from "../components/Text";
 import Typewriter from "../components/Typewriter";
 
 export default function Home({ about }) {
@@ -42,7 +41,9 @@ export default function Home({ about }) {
                 ]}
               />
             </Header>
-            <Text marginY={"3rem"}>{about}</Text>
+            <Text variant={"about"} sx={{ my: "3rem" }}>
+              {about}
+            </Text>
             <About.Footer>
               <About.Button href="#projects">Projects</About.Button>
               <About.Button href="#skills">Skills</About.Button>
@@ -138,23 +139,6 @@ export default function Home({ about }) {
           <Contact />
         </Container>
       </Section>
-
-      <Footer>
-        <Container>
-          <Row>
-            <Col>
-              <Text marginY={"2rem"} float={"left"}>
-                {"Copyright or something"}
-              </Text>
-            </Col>
-            <Col>
-              <Text marginY={"2rem"} float={"right"}>
-                {"Copyright or something"}
-              </Text>
-            </Col>
-          </Row>
-        </Container>
-      </Footer>
     </Fragment>
   );
 }
