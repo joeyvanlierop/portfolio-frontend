@@ -1,6 +1,7 @@
 export default {
   initialColorModeName: "light",
   useColorSchemeMediaQuery: true,
+  breakpoints: ["40em", "52em", "64em"],
   colors: {
     text: "#322",
     background: "#fff9f9",

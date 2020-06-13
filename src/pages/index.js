@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { Fragment, useContext } from "react";
-import { jsx, Text } from "theme-ui";
+import { jsx, Grid, Text } from "theme-ui";
 import About from "../components/About";
 import { ThemeContext } from "../components/AppTheme";
 import Button from "../components/Button";
@@ -80,8 +80,7 @@ export default function Home({ about }) {
               Résumé
             </Button>
           </Header>
-
-          <Row>
+          <Grid columns={[1, 2, 3]}>
             <SkillCard
               title={"Java"}
               points={[
@@ -103,8 +102,6 @@ export default function Home({ about }) {
                 "Interfaced with real-world hardware.",
               ]}
             />
-          </Row>
-          <Row>
             <SkillCard
               title={"Web Development"}
               points={[
@@ -127,7 +124,7 @@ export default function Home({ about }) {
                 "Currently working on a 2D platformer in Godot.",
               ]}
             />
-          </Row>
+          </Grid>
         </Container>
       </Section>
 

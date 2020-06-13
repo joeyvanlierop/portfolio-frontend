@@ -8,7 +8,6 @@ function GlobalStyle() {
         html {
           line-height: 1.5;
           scroll-behavior: smooth;
-          box-sizing: border-box;
         }
 
         html,
@@ -20,12 +19,6 @@ function GlobalStyle() {
           display: flex;
           flex-direction: column;
           min-height: 100%;
-        }
-
-        *,
-        *:before,
-        *:after {
-          box-sizing: inherit;
         }
       `}
     />

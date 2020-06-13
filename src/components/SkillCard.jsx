@@ -8,19 +8,10 @@ const StyledSkillCard = styled(Col)`
   flex-direction: column;
   justify-content: space-between;
   padding: 2rem;
-  margin: 0.5rem 0;
   border-width: 2px;
   border-style: solid;
   border-color: ${({ theme }) => theme.colors.text};
   border-radius: 10px;
-
-  &:not(:first-of-type) {
-    margin-left: 0.5rem;
-  }
-
-  &:not(:last-child) {
-    margin-right: 0.5rem;
-  }
 `;
 
 export function SkillCard({ title, points }) {
