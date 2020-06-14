@@ -21,7 +21,7 @@ const StyledDivider = styled.hr`
 export function Divider() {
   return (
     <DividerWrapper>
-      <StyledDivider className="divider" />
+      <StyledDivider />
     </DividerWrapper>
   );
 }
