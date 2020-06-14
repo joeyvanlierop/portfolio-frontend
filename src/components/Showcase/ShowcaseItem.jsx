@@ -55,7 +55,13 @@ export function ShowcaseItem({ title, description, badges }) {
       </div>
       <Flex sx={{ flexWrap: "wrap", justifyContent: "flex-start" }}>
         {badges.map((text) => (
-          <Badge marginTop={"0.5rem"} marginRight={"0.5rem"} key={text}>
+          <Badge
+            sx={{
+              marginTop: "0.5rem",
+              marginRight: "0.5rem",
+            }}
+            key={text}
+          >
             {text}
           </Badge>
         ))}

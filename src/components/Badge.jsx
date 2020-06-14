@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { space } from "styled-system";
 
 const StyledBadge = styled.span`
-  ${space}
   color: ${({ theme }) => theme.colors.badge};
   background-color: ${({ theme }) => theme.colors.gray};
   font-family: ${({ theme }) => theme.fonts.badge};
