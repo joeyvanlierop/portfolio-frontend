@@ -57,7 +57,6 @@ export function Typewriter({
   loop,
   ...props
 }) {
-  const [text, setText] = useState("");
   const [isPrefixed, setIsPrefixed] = useState(false);
   const [isSuffixed, setIsSuffixed] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -78,6 +77,12 @@ export function Typewriter({
     return phrases[phraseIndex][1];
   }
 
+  function getText() {
+    return (
+      prefix.substring(0, prefixIndex) + getPhrase().substring(0, letterIndex)
+    );
+  }
+
   function updatePhrase() {
     if (!isPrefixed) {
       writePrefix();
@@ -90,7 +95,6 @@ export function Typewriter({
 
   function writePrefix() {
     if (prefixIndex < prefix.length) {
-      setText(prefix.substring(0, prefixIndex));
       setPrefixIndex(prefixIndex + 1);
       setWaitTime(writeSpeed);
     } else {
@@ -102,7 +106,6 @@ export function Typewriter({
     setWaitTime(writeSpeed);
 
     if (letterIndex <= getPhrase().length) {
-      setText(prefix + getPhrase().substring(0, letterIndex));
       setLetterIndex(letterIndex + 1);
     } else if (!isSuffixed && getSuffix()) {
       setIsSuffixed(true);
@@ -120,10 +123,8 @@ export function Typewriter({
     if (isSuffixed) {
       setIsSuffixed(false);
     } else if (letterIndex > 0) {
-      setText(prefix + getPhrase().substring(0, letterIndex));
       setLetterIndex(letterIndex - 1);
     } else {
-      setText(prefix);
       setIsDeleting(false);
       setPhraseIndex((phraseIndex + 1) % phrases.length);
       setWaitTime(deleteTimeout);
@@ -132,7 +133,7 @@ export function Typewriter({
 
   return (
     <StyledTypewriter>
-      {text}
+      {getText()}
       {isSuffixed && getSuffix()}
       <BlinkingCursor />
     </StyledTypewriter>
