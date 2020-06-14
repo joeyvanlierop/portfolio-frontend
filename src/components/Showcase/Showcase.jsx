@@ -1,7 +1,8 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
+import { useRef, useState } from "react";
+import { Flex } from "theme-ui";
 import Container from "../Container";
-import Row from "../Row";
 import ShowcaseItem from "./ShowcaseItem";
 
 const ShowcaseButton = styled.button`
@@ -95,7 +96,7 @@ export function Showcase({ items }) {
   }
 
   return (
-    <Row>
+    <Flex sx={{ width: "100%" }}>
       <ShowcaseButton onMouseDown={() => addOffset(10)} onMouseUp={stopScroll}>
         <ShowcaseButtonIcon className="material-icons">
           chevron_left
@@ -115,7 +116,7 @@ export function Showcase({ items }) {
           chevron_right
         </ShowcaseButtonIcon>
       </ShowcaseButton>
-    </Row>
+    </Flex>
   );
 }
 
