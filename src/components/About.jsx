@@ -1,5 +1,4 @@
 import { keyframes } from "@emotion/core";
-import styled from "@emotion/styled";
 import React from "react";
 import Button from "./Button";
 
@@ -15,57 +14,52 @@ const Grow = keyframes`
   }
 `;
 
-const AboutWrapper = styled.div`
-  margin: auto 0;
-`;
-
-const StyledFooter = styled.section`
-  font-family: "Montserrat", sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-`;
-
-const StyledButton = styled(Button)`
-  font-family: "Montserrat", sans-serif;
-
-  &:not(:first-of-type) {
-    margin-left: 1rem;
-  }
-
-  &:not(:last-child) {
-    margin-right: 1rem;
-  }
-`;
-
-const StyledAbout = styled.div`
-  border-left: 2px dotted ${({ theme }) => theme.colors.text};
-  margin: 0;
-  padding: 0 2rem;
-  opacity: 1;
-  transform: scale(1);
-  animation: 1.5s ease-out ${Grow};
-`;
-
 export function About({ children, ...props }) {
   return (
-    <AboutWrapper {...props}>
-      <StyledAbout>{children}</StyledAbout>
-    </AboutWrapper>
+    <div sx={{ margin: "auto 0" }} {...props}>
+      <div
+        sx={{
+          borderColor: "text",
+          borderLeft: "2px dotted",
+          margin: "0",
+          padding: "0 2rem",
+          opacity: "1",
+          transform: "scale(1)",
+          animation: `1.5s ease-out ${Grow}`,
+        }}
+      >
+        {children}
+      </div>
+    </div>
   );
 }
 
 export function AboutFooter({ children, ...props }) {
-  return <StyledFooter {...props}>{children}</StyledFooter>;
+  return (
+    <section
+      sx={{
+        fontFamily: "Montserrat, sans-serif",
+        fontSize: "1rem",
+        fontWeight: "500",
+      }}
+      {...props}
+    >
+      {children}
+    </section>
+  );
 }
 
 export function AboutButton({ children, ...props }) {
-  return <StyledButton {...props}>{children}</StyledButton>;
+  return (
+    <Button
+      sx={{
+        fontFamily: "Montserrat, sans-serif",
+        marginRight: "2rem",
+      }}
+      {...props}
+    >
+      {children}
+    </Button>
+  );
 }
-
-// About.Footer = ({ children }) => <AboutFooter>{children}</AboutFooter>;
-
-// About.Button = ({ children, ...props }) => (
-//   <AboutButton {...props}>{children}</AboutButton>
-// );
-
 export default About;
