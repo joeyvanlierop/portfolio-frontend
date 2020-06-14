@@ -1,18 +1,12 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { border, color, space, typography } from "styled-system";
 
 const StyledButton = styled.a`
-  ${color}
-  ${typography}
-  ${space}
-  ${border}
-  
   line-height: 1.5;
   text-decoration: none;
   display: inline-block;
-  color: ${({ theme }) => theme.colors.text};
   background-color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.text};
   border-style: solid;
   border-radius: 0.25rem;
   user-select: none;
@@ -30,30 +24,32 @@ const StyledButton = styled.a`
   &:hover {
     color: ${({ theme }) => theme.colors.background};
     background-color: ${({ theme }) => theme.colors.text};
-  };
+  }
 
   &:focus {
     outline: none;
-  };
+  }
 `;
 
 export function Button({ href, submit, children, ...props }) {
   return (
-    <StyledButton as={submit ? "button" : ""} href={href} {...props}>
+    <StyledButton
+      sx={{
+        fontFamily: "button",
+        fontSize: "1rem",
+        fontWeight: "500",
+        marginX: "0",
+        marginY: "0",
+        borderWidth: "1px",
+        borderColor: "text",
+      }}
+      as={submit ? "button" : ""}
+      href={href}
+      {...props}
+    >
       {children}
     </StyledButton>
   );
 }
-
-Button.defaultProps = {
-  fontFamily: "button",
-  fontSize: "1rem",
-  fontWeight: "500",
-  marginX: "0",
-  marginY: "0",
-  borderWidth: "1px",
-  borderColor: "text",
-  color: "text",
-};
 
 export default Button;

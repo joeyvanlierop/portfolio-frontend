@@ -3,16 +3,6 @@ import styled from "@emotion/styled";
 import React from "react";
 import Button from "./Button";
 
-const AboutWrapper = styled.div`
-  margin: auto 0;
-`;
-
-const AboutFooter = styled.section`
-  font-family: "Montserrat", sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-`;
-
 const Grow = keyframes`
   0% {
     opacity: 0;
@@ -25,7 +15,17 @@ const Grow = keyframes`
   }
 `;
 
-const AboutButton = styled(Button)`
+const AboutWrapper = styled.div`
+  margin: auto 0;
+`;
+
+const StyledFooter = styled.section`
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+`;
+
+const StyledButton = styled(Button)`
   font-family: "Montserrat", sans-serif;
 
   &:not(:first-of-type) {
@@ -54,10 +54,18 @@ export function About({ children, ...props }) {
   );
 }
 
-About.Footer = ({ children }) => <AboutFooter>{children}</AboutFooter>;
+export function AboutFooter({ children, ...props }) {
+  return <StyledFooter {...props}>{children}</StyledFooter>;
+}
 
-About.Button = ({ children, ...props }) => (
-  <AboutButton {...props}>{children}</AboutButton>
-);
+export function AboutButton({ children, ...props }) {
+  return <StyledButton {...props}>{children}</StyledButton>;
+}
+
+// About.Footer = ({ children }) => <AboutFooter>{children}</AboutFooter>;
+
+// About.Button = ({ children, ...props }) => (
+//   <AboutButton {...props}>{children}</AboutButton>
+// );
 
 export default About;

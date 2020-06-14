@@ -1,6 +1,6 @@
 import React, { Fragment, useContext } from "react";
 import { Grid, Text } from "theme-ui";
-import About from "../components/About";
+import About, { AboutButton, AboutFooter } from "../components/About";
 import { ThemeContext } from "../components/AppTheme";
 import Button from "../components/Button";
 import Contact from "../components/Contact";
@@ -42,14 +42,14 @@ export default function Home({ about }) {
             <Text variant={"about"} sx={{ my: "3rem" }}>
               {about}
             </Text>
-            <About.Footer>
-              <About.Button href="#projects">Projects</About.Button>
-              <About.Button href="#skills">Skills</About.Button>
-              <About.Button href="#contact">Contact</About.Button>
-              <About.Button inverted onClick={() => toggle()}>
+            <AboutFooter>
+              <AboutButton href="#projects">Projects</AboutButton>
+              <AboutButton href="#skills">Skills</AboutButton>
+              <AboutButton href="#contact">Contact</AboutButton>
+              <AboutButton inverted onClick={() => toggle()}>
                 {colorMode === "light" ? "Dark" : "Light"}
-              </About.Button>
-            </About.Footer>
+              </AboutButton>
+            </AboutFooter>
           </About>
         </Container>
       </Splash>
@@ -70,10 +70,12 @@ export default function Home({ about }) {
           <Header>
             Skills
             <Button
-              fontSize="1.25rem"
-              fontWeight="600"
-              borderWidth="2px"
-              marginX="2rem"
+              sx={{
+                fontSize: "1.25rem",
+                fontWeight: "600",
+                borderWidth: "2px",
+                marginX: "2rem",
+              }}
             >
               Résumé
             </Button>

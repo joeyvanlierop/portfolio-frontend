@@ -2,7 +2,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
-import { color, space, typography } from "styled-system";
 
 const StyledNavbar = styled.nav`
   position: fixed;
@@ -24,10 +23,7 @@ const StyledNavbar = styled.nav`
 `;
 
 const StyledLink = styled.a`
-  ${color}
-  ${typography}
-  ${space}
-  cursor: pointer; 
+  cursor: pointer;
   text-decoration: none;
   text-transform: uppercase;
   opacity: ${(props) => (props.selected ? 1 : 0.5)};
@@ -63,21 +59,23 @@ export function NavbarLink({ href, children, ...props }) {
 
   return (
     <Link href={href}>
-      <StyledLink selected={router.pathname === href} {...props}>
+      <StyledLink
+        sx={{
+          color: "text",
+          fontFamily: "navbar",
+          fontSize: "1.25rem",
+          fontWeight: "700",
+          mx: "2rem",
+          my: "0",
+          padding: "2rem",
+        }}
+        selected={router.pathname === href}
+        {...props}
+      >
         {children}
       </StyledLink>
     </Link>
   );
 }
-
-NavbarLink.defaultProps = {
-  color: "text",
-  fontFamily: "navbar",
-  fontSize: "1.25rem",
-  fontWeight: "700",
-  mx: "2rem",
-  my: "0",
-  padding: "2rem",
-};
 
 export default Navbar;
