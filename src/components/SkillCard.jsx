@@ -1,9 +1,8 @@
-/** @jsx jsx */
+import React from "react";
 import styled from "@emotion/styled";
-import { jsx, Text } from "theme-ui";
-import Col from "./Col";
+import { Text } from "theme-ui";
 
-const StyledSkillCard = styled(Col)`
+const StyledSkillCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;

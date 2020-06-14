@@ -1,6 +1,5 @@
-/** @jsx jsx */
-import { Fragment, useContext } from "react";
-import { jsx, Grid, Text } from "theme-ui";
+import React, { Fragment, useContext } from "react";
+import { Grid, Text } from "theme-ui";
 import About from "../components/About";
 import { ThemeContext } from "../components/AppTheme";
 import Button from "../components/Button";
@@ -8,7 +7,6 @@ import Contact from "../components/Contact";
 import Container from "../components/Container";
 import Divider from "../components/Divider";
 import Header from "../components/Header";
-import Row from "../components/Row";
 import Section from "../components/Section";
 import GitHubShowcase from "../components/Showcase/GitHubShowcase";
 import SkillCard from "../components/SkillCard";

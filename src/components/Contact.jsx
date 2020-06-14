@@ -1,8 +1,8 @@
-/** @jsx jsx */
+import React from "react";
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
-import { Flex, Grid, jsx } from "theme-ui";
+import { Flex, Grid } from "theme-ui";
 import api from "../api";
 import Button from "./Button";
 
