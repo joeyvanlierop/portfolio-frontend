@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { useRef, useState } from "react";
-import { Flex } from "theme-ui";
+import { Flex, Grid, Box } from "theme-ui";
 import Container from "../Container";
 import ShowcaseItem from "./ShowcaseItem";
 
@@ -69,16 +69,6 @@ const ShowcaseWrapper = styled.div`
   }
 `;
 
-const StyledShowcase = styled.div`
-  will-change: transform;
-  transform: translateX(${(props) => props.offset}px);
-  margin: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  transition: all 0.5s ease-out;
-`;
-
 export function Showcase({ items }) {
   const [offset, setOffset] = useState(0);
   const [timer, setTimer] = useState(null);
@@ -104,11 +94,23 @@ export function Showcase({ items }) {
       </ShowcaseButton>
       <ShowcaseWrapper>
         <Container>
-          <StyledShowcase offset={offset}>
+          <Flex
+            sx={{
+              willChange: "transform",
+              transform: `translateX(${offset}px)`,
+              margin: "auto",
+              alignItems: "center",
+              transition: "all 0.5s ease-out",
+
+              "& > *": {
+                marginRight: "1rem",
+              },
+            }}
+          >
             {items.map((item) => (
               <ShowcaseItem key={item.title} {...item} />
             ))}
-          </StyledShowcase>
+          </Flex>
         </Container>
       </ShowcaseWrapper>
       <ShowcaseButton onMouseDown={() => addOffset(-10)} onMouseUp={stopScroll}>

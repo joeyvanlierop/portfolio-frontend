@@ -15,7 +15,7 @@ export function ShowcaseItem({ title, description, badges }) {
         justifyContent: "space-between",
         height: "20rem",
         padding: "2rem",
-        margin: "1rem 0",
+        marginY: "1rem",
         borderWidth: "2px",
         borderStyle: "solid",
         borderColor: "text",
