@@ -81,9 +81,7 @@ export function Contact() {
     <Box as="form" onSubmit={handleSubmit}>
       <Grid columns={2} gap={"4rem"} sx={{ my: "2rem" }}>
         <Input
-          sx={{
-            opacity: inputs.name && !sent ? "1" : "0.5",
-          }}
+          variant={inputs.name && !sent ? null : "muted"}
           onChange={handleInputChange}
           placeholder={"Name"}
           name={"name"}
@@ -93,9 +91,7 @@ export function Contact() {
           required
         />
         <Input
-          sx={{
-            opacity: inputs.email && !sent ? "1" : "0.5",
-          }}
+          variant={inputs.email && !sent ? "input" : "muted"}
           onChange={handleInputChange}
           placeholder={"Email"}
           name={"email"}
@@ -107,9 +103,7 @@ export function Contact() {
       </Grid>
 
       <Input
-        sx={{
-          opacity: inputs.message && !sent ? "1" : "0.5",
-        }}
+        variant={inputs.message && !sent ? "input" : "muted"}
         as={TextareaAutosize}
         onChange={handleInputChange}
         placeholder={"Message"}

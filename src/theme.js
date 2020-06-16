@@ -69,7 +69,8 @@ export default {
         outline: "none",
       },
     },
-    faded: {
+    muted: {
+      variant: "forms.input",
       opacity: "0.5",
     },
   },
@@ -98,27 +99,9 @@ export default {
       },
     },
     inverted: {
-      fontFamily: "button",
-      fontSize: "1rem",
-      fontWeight: "500",
-      borderStyle: "solid",
-      borderRadius: "0.25rem",
-      borderWidth: "1px",
-      borderColor: "text",
+      variant: "buttons.primary",
       color: "background",
       backgroundColor: "text",
-      padding: "0.375rem 0.75rem",
-      transition: "all 0.15s ease-in-out",
-      cursor: "pointer",
-
-      ":hover": {
-        color: "background",
-        backgroundColor: "text",
-      },
-
-      ":focus": {
-        outline: "none",
-      },
     },
   },
   styles: {
