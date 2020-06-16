@@ -2,7 +2,7 @@ import React, { Fragment, useContext } from "react";
 import { Grid, Text } from "theme-ui";
 import About, { AboutButton, AboutFooter } from "../components/About";
 import { ThemeContext } from "../components/AppTheme";
-import Button from "../components/Button";
+import { Button } from "theme-ui";
 import Contact from "../components/Contact";
 import Container from "../components/Container";
 import Divider from "../components/Divider";
@@ -46,7 +46,7 @@ export default function Home({ about }) {
               <AboutButton href="#projects">Projects</AboutButton>
               <AboutButton href="#skills">Skills</AboutButton>
               <AboutButton href="#contact">Contact</AboutButton>
-              <AboutButton inverted onClick={() => toggle()}>
+              <AboutButton variant={"inverted"} onClick={() => toggle()}>
                 {colorMode === "light" ? "Dark" : "Light"}
               </AboutButton>
             </AboutFooter>

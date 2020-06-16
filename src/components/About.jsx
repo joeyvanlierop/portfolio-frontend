@@ -1,6 +1,6 @@
 import { keyframes } from "@emotion/core";
 import React from "react";
-import Button from "./Button";
+import { Button } from "theme-ui";
 
 const Grow = keyframes`
   0% {
@@ -52,6 +52,7 @@ export function AboutFooter({ children, ...props }) {
 export function AboutButton({ children, ...props }) {
   return (
     <Button
+      as={"a"}
       sx={{
         fontFamily: "Montserrat, sans-serif",
         marginRight: "2rem",

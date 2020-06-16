@@ -1,42 +1,8 @@
-import React from "react";
-import styled from "@emotion/styled";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
-import { Flex, Grid } from "theme-ui";
+import { Box, Flex, Grid, Input } from "theme-ui";
 import api from "../api";
-import Button from "./Button";
-
-const StyledInput = styled.input`
-  font-size: 1.25rem;
-  font-family: ${({ theme }) => theme.fonts.form};
-  width: 100%;
-  padding: 1rem;
-  padding-left: 0;
-  border: none;
-  resize: none;
-  background-color: transparent;
-  opacity: ${(props) => (props.valid && !props.disabled ? 1 : 0.5)};
-  color: ${({ theme }) => theme.colors.text};
-  border-bottom-color: ${({ theme }) => theme.colors.text};
-  border-bottom-style: dotted;
-  border-bottom-width: 2px;
-  transition: opacity 0.3s ease;
-
-  &:focus {
-    outline: none;
-  }
-
-  /* Hides the yellow background when autofilling an input field */
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active {
-    transition: color 9999s ease-out, background-color 9999s ease-out;
-    -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
-    transition-delay: 9999s;
-    -webkit-transition-delay: 9999s;
-  }
-`;
+import { Button } from "theme-ui";
 
 function useContactForm(defaultValues, submitCallback) {
   const [inputs, setInputs] = useState(defaultValues);
@@ -112,39 +78,43 @@ export function Contact() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Box as="form" onSubmit={handleSubmit}>
       <Grid columns={2} gap={"4rem"} sx={{ my: "2rem" }}>
-        <StyledInput
+        <Input
+          sx={{
+            opacity: inputs.name && !sent ? "1" : "0.5",
+          }}
           onChange={handleInputChange}
           placeholder={"Name"}
           name={"name"}
           type={"text"}
           spellCheck={false}
-          valid={inputs.name}
           value={inputs.name}
-          disabled={sent}
           required
         />
-        <StyledInput
+        <Input
+          sx={{
+            opacity: inputs.email && !sent ? "1" : "0.5",
+          }}
           onChange={handleInputChange}
           placeholder={"Email"}
           name={"email"}
           type={"email"}
           spellCheck={false}
-          valid={inputs.email}
           value={inputs.email}
-          disabled={sent}
           required
         />
       </Grid>
 
-      <StyledInput
+      <Input
+        sx={{
+          opacity: inputs.message && !sent ? "1" : "0.5",
+        }}
         as={TextareaAutosize}
         onChange={handleInputChange}
         placeholder={"Message"}
         name={"message"}
         type={"text"}
-        valid={inputs.message}
         value={inputs.message}
         disabled={sent}
         required
@@ -164,14 +134,13 @@ export function Contact() {
               backgroundColor: valid ? "valid" : "invalid",
             },
           }}
-          fontSize="1.25rem"
           disabled={sent}
           as="button"
         >
           {buttonText}
         </Button>
       </Flex>
-    </form>
+    </Box>
   );
 }
 
