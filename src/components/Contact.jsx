@@ -38,21 +38,6 @@ const StyledInput = styled.input`
   }
 `;
 
-const StyledButton = styled(Button)`
-  color: ${(props) =>
-    props.valid ? props.theme.colors.valid : props.theme.colors.invalid};
-  border-color: ${(props) =>
-    props.valid ? props.theme.colors.valid : props.theme.colors.invalid};
-  margin-top: 3rem;
-  transition: all 0.3s ease;
-
-  &:hover {
-    color: white;
-    background-color: ${(props) =>
-      props.valid ? props.theme.colors.valid : props.theme.colors.invalid};
-  }
-`;
-
 function useContactForm(defaultValues, submitCallback) {
   const [inputs, setInputs] = useState(defaultValues);
 
@@ -81,6 +66,22 @@ const BUTTON_TEXT = {
 };
 
 export function Contact() {
+  const [valid, setValid] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [buttonText, setButtonText] = useState(BUTTON_TEXT.send);
+  const { inputs, handleInputChange, handleSubmit } = useContactForm(
+    { name: "", email: "", message: "" },
+    submitCallback
+  );
+
+  useEffect(() => {
+    if (inputs.name && inputs.email && inputs.message) {
+      setValid(true);
+    } else {
+      setValid(false);
+    }
+  }, [inputs]);
+
   function submitCallback() {
     let data = {
       name: inputs.name,
@@ -109,22 +110,6 @@ export function Contact() {
         setButtonText(BUTTON_TEXT.error);
       });
   }
-
-  const [valid, setValid] = useState(false);
-  const [sent, setSent] = useState(false);
-  const [buttonText, setButtonText] = useState(BUTTON_TEXT.send);
-  const { inputs, handleInputChange, handleSubmit } = useContactForm(
-    { name: "", email: "", message: "" },
-    submitCallback
-  );
-
-  useEffect(() => {
-    if (inputs.name && inputs.email && inputs.message) {
-      setValid(true);
-    } else {
-      setValid(false);
-    }
-  }, [inputs]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -164,10 +149,27 @@ export function Contact() {
         disabled={sent}
         required
       />
+
       <Flex sx={{ justifyContent: "center" }}>
-        <StyledButton fontSize="1.25rem" valid={valid} disabled={sent} submit>
+        <Button
+          sx={{
+            fontSize: "1.25rem",
+            color: valid ? "valid" : "invalid",
+            borderColor: valid ? "valid" : "invalid",
+            marginTop: "3rem",
+            transition: "all 0.3s ease",
+
+            ":hover": {
+              color: "white",
+              backgroundColor: valid ? "valid" : "invalid",
+            },
+          }}
+          fontSize="1.25rem"
+          disabled={sent}
+          as="button"
+        >
           {buttonText}
-        </StyledButton>
+        </Button>
       </Flex>
     </form>
   );
