@@ -1,6 +1,6 @@
 import { keyframes } from "@emotion/core";
 import React from "react";
-import { Button } from "theme-ui";
+import { Button, Box } from "theme-ui";
 
 const Grow = keyframes`
   0% {
@@ -16,8 +16,8 @@ const Grow = keyframes`
 
 export function About({ children, ...props }) {
   return (
-    <div sx={{ margin: "auto 0" }} {...props}>
-      <div
+    <Box sx={{ margin: "auto 0" }} {...props}>
+      <Box
         sx={{
           borderColor: "text",
           borderLeft: "2px dotted",
@@ -29,8 +29,8 @@ export function About({ children, ...props }) {
         }}
       >
         {children}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 
