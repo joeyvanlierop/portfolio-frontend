@@ -9,7 +9,6 @@
     "lint:fix": "npx eslint --fix ."
   },
   "dependencies": {
-    "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
     "axios": "^0.19.2",
     "lodash.get": "^4.4.2",
