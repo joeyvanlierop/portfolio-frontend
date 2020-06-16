@@ -1,5 +1,6 @@
 import { keyframes } from "@emotion/core";
 import React, { useEffect, useRef, useState } from "react";
+import { Text } from "theme-ui";
 
 const BlinkCaret = keyframes`
   from,
@@ -115,7 +116,7 @@ export function Typewriter({
   }
 
   return (
-    <div
+    <Text
       sx={{
         display: "flex",
         justifyContent: "flex-start",
@@ -135,7 +136,7 @@ export function Typewriter({
           animation: `${BlinkCaret} 1s step-end infinite`,
         }}
       />
-    </div>
+    </Text>
   );
 }
 
