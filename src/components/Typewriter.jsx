@@ -1,12 +1,5 @@
 import { keyframes } from "@emotion/core";
-import styled from "@emotion/styled";
 import React, { useEffect, useRef, useState } from "react";
-
-const StyledTypewriter = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  line-height: 1.5;
-`;
 
 const BlinkCaret = keyframes`
   from,
@@ -17,16 +10,6 @@ const BlinkCaret = keyframes`
     opacity: 100;
   }
 }`;
-
-const BlinkingCursor = styled.span`
-  overflow: hidden;
-  border-bottom: 0.325rem solid;
-  width: 1.75rem;
-  white-space: nowrap;
-  margin-left: 0.2rem;
-  margin-bottom: 1.25rem;
-  animation: ${BlinkCaret} 1s step-end infinite;
-`;
 
 // See https://overreacted.io/making-setinterval-declarative-with-react-hooks/ for more information on useInterval
 function useInterval(callback, delay) {
@@ -132,11 +115,27 @@ export function Typewriter({
   }
 
   return (
-    <StyledTypewriter>
+    <div
+      sx={{
+        display: "flex",
+        justifyContent: "flex-start",
+        lineHeight: "1.5",
+      }}
+    >
       {getText()}
       {isSuffixed && getSuffix()}
-      <BlinkingCursor />
-    </StyledTypewriter>
+      <span
+        sx={{
+          overflow: "hidden",
+          borderBottom: "0.325rem solid",
+          width: "1.75rem",
+          whiteSpace: "nowrap",
+          marginLeft: "0.2rem",
+          marginBottom: "1.25rem",
+          animation: `${BlinkCaret} 1s step-end infinite`,
+        }}
+      />
+    </div>
   );
 }
 
