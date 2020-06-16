@@ -1,36 +1,27 @@
 import React from "react";
-import styled from "@emotion/styled";
 import { Text } from "theme-ui";
 import Badge from "../Badge";
 import { Flex } from "theme-ui";
 
-const StyledShowcaseItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: 20rem;
-  justify-content: space-between;
-  height: 20rem;
-  padding: 2rem;
-  margin: 1rem 0;
-  border-width: 2px;
-  border-style: solid;
-  border-color: ${({ theme }) => theme.colors.text};
-  border-radius: 10px;
-
-  &:not(:first-of-type) {
-    margin-left: 0.5rem;
-  }
-
-  &:not(:last-child) {
-    margin-right: 0.5rem;
-  }
-`;
-
 export function ShowcaseItem({ title, description, badges }) {
   return (
-    <StyledShowcaseItem>
+    <div
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        flexGrow: "0",
+        flexShrink: "0",
+        flexBasis: "20rem",
+        justifyContent: "space-between",
+        height: "20rem",
+        padding: "2rem",
+        margin: "1rem 0",
+        borderWidth: "2px",
+        borderStyle: "solid",
+        borderColor: "text",
+        borderRadius: "10px",
+      }}
+    >
       <div>
         <Text
           variant="uppercase"
@@ -66,7 +57,7 @@ export function ShowcaseItem({ title, description, badges }) {
           </Badge>
         ))}
       </Flex>
-    </StyledShowcaseItem>
+    </div>
   );
 }
 
