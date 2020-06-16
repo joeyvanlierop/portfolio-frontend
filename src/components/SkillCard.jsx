@@ -1,21 +1,20 @@
 import React from "react";
-import styled from "@emotion/styled";
 import { Text } from "theme-ui";
-
-const StyledSkillCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 2rem;
-  border-width: 2px;
-  border-style: solid;
-  border-color: ${({ theme }) => theme.colors.text};
-  border-radius: 10px;
-`;
 
 export function SkillCard({ title, points }) {
   return (
-    <StyledSkillCard>
+    <div
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        padding: "2rem",
+        borderWidth: "2px",
+        borderStyle: "solid",
+        borderColor: "text",
+        borderRadius: "10px",
+      }}
+    >
       <div>
         <Text
           variant="uppercase"
@@ -44,7 +43,7 @@ export function SkillCard({ title, points }) {
           ))}
         </ul>
       </div>
-    </StyledSkillCard>
+    </div>
   );
 }
 
