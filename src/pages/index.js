@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from "react";
-import { Grid, Text } from "theme-ui";
+import { Grid, Text, Flex } from "theme-ui";
 import About, { AboutButton, AboutFooter } from "../components/About";
 import { ThemeContext } from "../components/AppTheme";
 import { Button } from "theme-ui";
@@ -21,24 +21,21 @@ export default function Home({ about }) {
       <Splash>
         <Container>
           <About id="about">
-            <Header>
-              <Typewriter
-                className="header"
-                prefix={"Hi, I'm"}
-                prefixIndex={1}
-                loop={false}
-                phrases={[
-                  [" Joey!"],
-                  [" a developer‍", " 👨‍💻"],
-                  [" a student", " 🎓"],
-                  [" a skier", " 🎿"],
-                  [" a cast iron enthusiast", " 🍳"],
-                  [" a scuba diver", " 🤿"],
-                  [" a climber", " 🧗"],
-                  ["..."],
-                ]}
-              />
-            </Header>
+            <Typewriter
+              prefix={"Hi, I'm"}
+              prefixIndex={1}
+              loop={false}
+              phrases={[
+                [" Joey!"],
+                [" a developer‍", " 👨‍💻"],
+                [" a student", " 🎓"],
+                [" a skier", " 🎿"],
+                [" a cast iron enthusiast", " 🍳"],
+                [" a scuba diver", " 🤿"],
+                [" a climber", " 🧗"],
+                ["..."],
+              ]}
+            />
             <Text variant={"about"} sx={{ my: "3rem" }}>
               {about}
             </Text>
@@ -58,7 +55,7 @@ export default function Home({ about }) {
 
       <Section id={"projects"}>
         <Container>
-          <Header>Projects</Header>
+          <Text variant="header">Projects</Text>
         </Container>
         <GitHubShowcase profile="joeyvanlierop" />
       </Section>
@@ -67,19 +64,19 @@ export default function Home({ about }) {
 
       <Section id="skills">
         <Container>
-          <Header>
-            Skills
+          <Flex sx={{ alignItems: "center", my: "1rem" }}>
+            <Text variant="header">Skills</Text>
             <Button
               sx={{
                 fontSize: "1.25rem",
                 fontWeight: "600",
                 borderWidth: "2px",
-                marginX: "2rem",
+                marginX: "1rem",
               }}
             >
               Résumé
             </Button>
-          </Header>
+          </Flex>
           <Grid columns={[1, 2, 3]}>
             <SkillCard
               title={"Java"}
@@ -132,7 +129,7 @@ export default function Home({ about }) {
 
       <Section id="contact">
         <Container>
-          <Header>Contact</Header>
+          <Text variant="header">Contact</Text>
           <Contact />
         </Container>
       </Section>

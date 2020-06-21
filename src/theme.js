@@ -35,18 +35,24 @@ export default {
   text: {
     default: {
       fontFamily: "body",
-      fontSize: 3,
       color: "text",
+      fontSize: ["0.5rem", "1.5rem"],
     },
     about: {
+      variant: "text.default",
       fontFamily: "body",
       fontWeight: 400,
-      fontSize: "1.5rem",
     },
     uppercase: {
+      variant: "text.default",
       textTransform: "uppercase",
       fontWeight: 600,
-      fontSize: "1.5rem",
+    },
+    header: {
+      variant: "text.default",
+      fontWeight: 700,
+      fontSize: ["1.5rem", "3rem"],
+      fontFamily: "header",
     },
   },
   forms: {
