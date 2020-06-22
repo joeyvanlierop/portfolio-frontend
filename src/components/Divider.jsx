@@ -16,6 +16,7 @@ export function Divider() {
         sx={{
           margin: "0",
           padding: "0",
+          minWidth: "15rem",
           width: "20%",
           border: "none",
           borderBottom: "2px dotted",
