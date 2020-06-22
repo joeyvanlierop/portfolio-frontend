@@ -30,7 +30,7 @@ const StyledLink = styled.a`
   transition: opacity 0.3s ease;
 
   &:hover {
-    opacity: 0.75;
+    opacity: 1;
   }
 `;
 
@@ -65,9 +65,9 @@ export function NavbarLink({ href, children, ...props }) {
           fontFamily: "navbar",
           fontSize: "1.25rem",
           fontWeight: "700",
-          mx: "2rem",
           my: "0",
-          padding: "2rem",
+          px: ["2rem", "6rem"],
+          py: "2rem",
         }}
         selected={router.pathname === href}
         {...props}
