@@ -1,18 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import { border, color, space, typography } from "styled-system";
+import {
+  border,
+  color,
+  space,
+  typography,
+  layout,
+  flexbox,
+} from "styled-system";
 
 const StyledButton = styled.a`
-  ${color}
-  ${typography}
-  ${space}
-  ${border}
-  
   line-height: 1.5;
   text-decoration: none;
   display: inline-block;
   color: ${(props) => props.theme.colors.text};
-  background-color: ${(props) => props.theme.colors.background};
+  background-color: transparent;
   border-style: solid;
   border-radius: 0.25rem;
   user-select: none;
@@ -35,6 +37,13 @@ const StyledButton = styled.a`
   &:focus {
     outline: none;
   };
+
+  ${color}
+  ${typography}
+  ${border}
+  ${layout}
+  ${space}
+  ${flexbox}
 `;
 
 export function Button({ href, submit, children, ...props }) {
