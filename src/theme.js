@@ -36,7 +36,7 @@ export default {
     default: {
       fontFamily: "body",
       color: "text",
-      fontSize: ["0.5rem", "1.5rem"],
+      fontSize: ["1rem", "1.5rem"],
     },
     about: {
       variant: "text.default",
@@ -46,12 +46,13 @@ export default {
     uppercase: {
       variant: "text.default",
       textTransform: "uppercase",
+      fontSize: "1.25rem",
       fontWeight: 600,
     },
     header: {
       variant: "text.default",
       fontWeight: 700,
-      fontSize: ["1.5rem", "3rem"],
+      fontSize: ["2rem", "3rem"],
       fontFamily: "header",
     },
   },
