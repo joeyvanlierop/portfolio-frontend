@@ -8,7 +8,8 @@ export function Section({ children, ...props }) {
         alignItems: "center",
         justifyContent: "center",
         flexDirection: "column",
-        padding: "12rem 0",
+        px: "0",
+        py: ["8rem", "16rem"],
       }}
       {...props}
     >
