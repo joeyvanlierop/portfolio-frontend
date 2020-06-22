@@ -1,16 +1,13 @@
 import React, { Fragment, useContext } from "react";
-import { Grid, Text, Flex } from "theme-ui";
-import About, { AboutButton, AboutFooter } from "../components/About";
+import { Box, Button, Flex, Grid, Text } from "theme-ui";
+import About, { AboutButton } from "../components/About";
 import { ThemeContext } from "../components/AppTheme";
-import { Button } from "theme-ui";
 import Contact from "../components/Contact";
 import Container from "../components/Container";
 import Divider from "../components/Divider";
-import Header from "../components/Header";
 import Section from "../components/Section";
 import GitHubShowcase from "../components/Showcase/GitHubShowcase";
 import SkillCard from "../components/SkillCard";
-import Splash from "../components/Splash";
 import Typewriter from "../components/Typewriter";
 
 export default function Home({ about }) {
@@ -47,14 +44,18 @@ export default function Home({ about }) {
             <Text variant={"about"} sx={{ my: "3rem" }}>
               {about}
             </Text>
-            <AboutFooter>
+            <Flex
+              sx={{
+                display: ["none", "flex"],
+              }}
+            >
               <AboutButton href="#projects">Projects</AboutButton>
               <AboutButton href="#skills">Skills</AboutButton>
               <AboutButton href="#contact">Contact</AboutButton>
               <AboutButton variant={"inverted"} onClick={() => toggle()}>
                 {colorMode === "light" ? "Dark" : "Light"}
               </AboutButton>
-            </AboutFooter>
+            </Flex>
           </About>
         </Container>
       </Box>
@@ -150,7 +151,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      about: about.text,
+      about: about.short,
     },
   };
 }

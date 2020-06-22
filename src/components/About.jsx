@@ -1,6 +1,6 @@
 import { keyframes } from "@emotion/core";
 import React from "react";
-import { Button, Box } from "theme-ui";
+import { Button, Box, Flex, Grid } from "theme-ui";
 
 const Grow = keyframes`
   0% {
@@ -31,21 +31,6 @@ export function About({ children, ...props }) {
         {children}
       </Box>
     </Box>
-  );
-}
-
-export function AboutFooter({ children, ...props }) {
-  return (
-    <section
-      sx={{
-        fontFamily: "Montserrat, sans-serif",
-        fontSize: "1rem",
-        fontWeight: "500",
-      }}
-      {...props}
-    >
-      {children}
-    </section>
   );
 }
 
