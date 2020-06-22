@@ -18,7 +18,15 @@ export default function Home({ about }) {
 
   return (
     <Fragment>
-      <Splash>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          height: "100vh",
+        }}
+      >
         <Container>
           <About id="about">
             <Typewriter
@@ -49,7 +57,7 @@ export default function Home({ about }) {
             </AboutFooter>
           </About>
         </Container>
-      </Splash>
+      </Box>
 
       <Divider />
 
