@@ -117,6 +117,7 @@ export function Typewriter({
 
   return (
     <Text
+      variant="header"
       sx={{
         display: "flex",
         justifyContent: "flex-start",
@@ -134,6 +135,7 @@ export function Typewriter({
           marginLeft: "0.2rem",
           marginBottom: "1.25rem",
           animation: `${BlinkCaret} 1s step-end infinite`,
+          display: ["none", "flex"],
         }}
       />
     </Text>
