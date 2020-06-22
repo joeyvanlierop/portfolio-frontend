@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
-import { Box, Flex, Grid, Input } from "theme-ui";
+import { Box, Button, Flex, Grid, Input } from "theme-ui";
 import api from "../api";
-import { Button } from "theme-ui";
 
 function useContactForm(defaultValues, submitCallback) {
   const [inputs, setInputs] = useState(defaultValues);
@@ -79,7 +78,7 @@ export function Contact() {
 
   return (
     <Box as="form" onSubmit={handleSubmit}>
-      <Grid columns={2} gap={"4rem"} sx={{ my: "2rem" }}>
+      <Grid columns={[1, 2]} gap={["2rem", "4rem"]} sx={{ my: "2rem" }}>
         <Input
           variant={inputs.name && !sent ? null : "muted"}
           onChange={handleInputChange}
