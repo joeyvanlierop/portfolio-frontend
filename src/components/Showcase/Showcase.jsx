@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "@emotion/styled";
-import { useRef, useState } from "react";
-import { Flex, Grid, Box } from "theme-ui";
+import React, { useRef, useState } from "react";
+import { Flex } from "theme-ui";
 import Container from "../Container";
 import ShowcaseItem from "./ShowcaseItem";
 
@@ -87,11 +86,11 @@ export function Showcase({ items }) {
 
   return (
     <Flex sx={{ width: "100%" }}>
-      <ShowcaseButton onMouseDown={() => addOffset(10)} onMouseUp={stopScroll}>
+      {/* <ShowcaseButton onMouseDown={() => addOffset(10)} onMouseUp={stopScroll}>
         <ShowcaseButtonIcon className="material-icons">
           chevron_left
         </ShowcaseButtonIcon>
-      </ShowcaseButton>
+      </ShowcaseButton> */}
       <ShowcaseWrapper>
         <Container>
           <Flex
@@ -113,11 +112,11 @@ export function Showcase({ items }) {
           </Flex>
         </Container>
       </ShowcaseWrapper>
-      <ShowcaseButton onMouseDown={() => addOffset(-10)} onMouseUp={stopScroll}>
+      {/* <ShowcaseButton onMouseDown={() => addOffset(-10)} onMouseUp={stopScroll}>
         <ShowcaseButtonIcon className="material-icons">
           chevron_right
         </ShowcaseButtonIcon>
-      </ShowcaseButton>
+      </ShowcaseButton> */}
     </Flex>
   );
 }
