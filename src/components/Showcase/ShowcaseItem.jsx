@@ -1,63 +1,63 @@
 import React from "react";
-import styled from "styled-components";
+import { Text } from "theme-ui";
 import Badge from "../Badge";
-import Flex from "../Flex";
-import Text from "../Text";
-
-const StyledShowcaseItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: 20rem;
-  justify-content: space-between;
-  height: 20rem;
-  padding: 2rem;
-  margin: 1rem 0;
-  border-width: 2px;
-  border-style: solid;
-  border-color: ${({ theme }) => theme.colors.text};
-  border-radius: 10px;
-
-  &:not(:first-child) {
-    margin-left: 0.5rem;
-  }
-
-  &:not(:last-child) {
-    margin-right: 0.5rem;
-  }
-`;
+import { Flex } from "theme-ui";
 
 export function ShowcaseItem({ title, description, badges }) {
   return (
-    <StyledShowcaseItem>
+    <div
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        flexGrow: "0",
+        flexShrink: "0",
+        justifyContent: "space-between",
+        flexBasis: ["80vw", "20rem"],
+        height: ["80vw", "20rem"],
+        padding: "2rem",
+        marginY: "1rem",
+        borderWidth: "2px",
+        borderStyle: "solid",
+        borderColor: "text",
+        borderRadius: "10px",
+      }}
+    >
       <div>
         <Text
-          uppercase
-          fontWeight={600}
-          fontFamily={"card"}
-          margin={"0"}
-          marginBottom={"1.5rem"}
+          variant="uppercase"
+          sx={{
+            fontFamily: "card",
+            margin: "0",
+            marginBottom: "1.5rem",
+          }}
         >
           {title}
         </Text>
         <Text
-          fontWeight={300}
-          fontFamily={"card"}
-          fontSize={"1rem"}
-          margin={"0"}
+          sx={{
+            fontWeight: 300,
+            fontFamily: "card",
+            fontSize: "1rem",
+            margin: "0",
+          }}
         >
           {description}
         </Text>
       </div>
-      <Flex flexWrap={"wrap"} justifyContent={"flex-start"}>
+      <Flex sx={{ flexWrap: "wrap", justifyContent: "flex-start" }}>
         {badges.map((text) => (
-          <Badge marginTop={"0.5rem"} marginRight={"0.5rem"} key={text}>
+          <Badge
+            sx={{
+              marginTop: "0.5rem",
+              marginRight: "0.5rem",
+            }}
+            key={text}
+          >
             {text}
           </Badge>
         ))}
       </Flex>
-    </StyledShowcaseItem>
+    </div>
   );
 }
 

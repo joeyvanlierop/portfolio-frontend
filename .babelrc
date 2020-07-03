@@ -2,11 +2,18 @@
   "presets": ["next/babel"],
   "plugins": [
     [
-      "styled-components",
+      "@emotion/babel-plugin-jsx-pragmatic",
       {
-        "ssr": true,
-        "fileName": false,
-        "preprocess": false
+        "module": "theme-ui",
+        "import": "jsx",
+        "export": "jsx"
+      }
+    ],
+    [
+      "@babel/plugin-transform-react-jsx",
+      {
+        "pragma": "jsx",
+        "pragmaFrag": "React.Fragment"
       }
     ]
   ]
