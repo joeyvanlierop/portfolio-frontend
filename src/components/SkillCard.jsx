@@ -1,38 +1,28 @@
 import React from "react";
-import styled from "styled-components";
-import Col from "./Col";
-import Text from "./Text";
-
-const StyledSkillCard = styled(Col)`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 2rem;
-  margin: 0.5rem 0;
-  border-width: 2px;
-  border-style: solid;
-  border-color: ${(props) => props.theme.colors.text};
-  border-radius: 10px;
-
-  &:not(:first-child) {
-    margin-left: 0.5rem;
-  }
-
-  &:not(:last-child) {
-    margin-right: 0.5rem;
-  }
-`;
+import { Text } from "theme-ui";
 
 export function SkillCard({ title, points }) {
   return (
-    <StyledSkillCard>
+    <div
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        padding: "2rem",
+        borderWidth: "2px",
+        borderStyle: "solid",
+        borderColor: "text",
+        borderRadius: "10px",
+      }}
+    >
       <div>
         <Text
-          uppercase
-          fontWeight={600}
-          fontFamily={"card"}
-          margin={"0"}
-          marginBottom={"1rem"}
+          variant="uppercase"
+          sx={{
+            fontFamily: "card",
+            margin: "0",
+            marginBottom: "1rem",
+          }}
         >
           {title}
         </Text>
@@ -40,10 +30,12 @@ export function SkillCard({ title, points }) {
           {points.map((text) => (
             <li key={text}>
               <Text
-                fontWeight={300}
-                fontFamily={"card"}
-                fontSize={"1rem"}
-                margin={"0"}
+                sx={{
+                  fontWeight: 300,
+                  fontFamily: "card",
+                  fontSize: "1rem",
+                  margin: "0",
+                }}
               >
                 {text}
               </Text>
@@ -51,7 +43,7 @@ export function SkillCard({ title, points }) {
           ))}
         </ul>
       </div>
-    </StyledSkillCard>
+    </div>
   );
 }
 

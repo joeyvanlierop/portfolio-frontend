@@ -1,43 +1,165 @@
-const colors = {
-  text: "#000",
-  background: "#fff",
-  primary: "#00f",
-  secondary: "#00a",
-  shadow: "rgba(0, 0, 0, 0.5)",
-  gray: "#6c757d",
-  badge: "#e8e6e3",
-  valid: "#28a745",
-  invalid: "#dc3545",
-  modes: {
-    light: {
-      text: "#322",
-      background: "#fff9f9",
-      shadow: "rgba(0, 0, 0, 0.5)",
-      primary: "#c30",
-      secondary: "#400",
-    },
-    dark: {
-      text: "#e8e6e3",
-      background: "#121212",
-      shadow: "rgba(0, 0, 0, 1)",
-      primary: "#0cf",
-      secondary: "#f0e",
-      gray: "#6c757d",
+export default {
+  initialColorModeName: "light",
+  useColorSchemeMediaQuery: true,
+  breakpoints: ["40em", "52em", "64em"],
+  colors: {
+    text: "#322",
+    background: "#fff9f9",
+    shadow: "rgba(0, 0, 0, 0.5)",
+    primary: "#c30",
+    secondary: "#400",
+    gray: "#6c757d",
+    badge: "#e8e6e3",
+    valid: "#28a745",
+    invalid: "#dc3545",
+    modes: {
+      dark: {
+        text: "#e8e6e3",
+        background: "rgb(18, 18, 18)",
+        shadow: "rgba(0, 0, 0, 1)",
+        primary: "#080808",
+        secondary: "#f0e",
+        gray: "#6c757d",
+      },
     },
   },
-};
+  fonts: {
+    header: "Karla, sans-serif",
+    button: "Karla, sans-serif",
+    card: "Karla, sans-serif",
+    form: "Karla, sans-serif",
+    badge: "Karla, sans-serif",
+    body: "Montserrat, sans-serif",
+    navbar: "Josefin Sans, sans-serif",
+  },
+  text: {
+    default: {
+      fontFamily: "body",
+      color: "text",
+      fontSize: ["1rem", "1.5rem"],
+    },
+    about: {
+      variant: "text.default",
+      fontFamily: "body",
+      fontWeight: 400,
+    },
+    uppercase: {
+      variant: "text.default",
+      textTransform: "uppercase",
+      fontSize: "1.25rem",
+      fontWeight: 600,
+    },
+    header: {
+      variant: "text.default",
+      fontWeight: 700,
+      fontSize: ["2rem", "3rem"],
+      fontFamily: "header",
+    },
+  },
+  forms: {
+    input: {
+      fontSize: "1.25rem",
+      fontFamily: "form",
+      width: "100%",
+      padding: "1rem",
+      paddingLeft: "0",
+      border: "none",
+      resize: "none",
+      color: "text",
+      backgroundColor: "transparent",
+      borderBottomColor: "text",
+      borderBottomStyle: "dotted",
+      borderBottomWidth: "2px",
+      transition: "opacity 0.3s ease",
 
-const fonts = {
-  header: "Karla, sans-serif",
-  button: "Karla, sans-serif",
-  card: "Karla, sans-serif",
-  form: "Karla, sans-serif",
-  badge: "Karla, sans-serif",
-  body: "Montserrat, sans-serif",
-  navbar: "Josefin Sans, sans-serif",
-};
+      ":focus": {
+        outline: "none",
+      },
+    },
+    muted: {
+      variant: "forms.input",
+      opacity: "0.5",
+    },
+  },
+  buttons: {
+    primary: {
+      fontFamily: "button",
+      fontSize: "1rem",
+      fontWeight: "500",
+      borderStyle: "solid",
+      borderRadius: "0.25rem",
+      borderWidth: "1px",
+      borderColor: "text",
+      color: "text",
+      backgroundColor: "background",
+      padding: "0.375rem 0.75rem",
+      transition: "all 0.15s ease-in-out",
+      cursor: "pointer",
 
-export default {
-  colors,
-  fonts,
+      ":hover": {
+        color: "background",
+        backgroundColor: "text",
+      },
+
+      ":focus": {
+        outline: "none",
+      },
+    },
+    inverted: {
+      variant: "buttons.primary",
+      color: "background",
+      backgroundColor: "text",
+    },
+  },
+  links: {
+    nav: {
+      color: "text",
+      fontFamily: "navbar",
+      fontSize: "1.25rem",
+      fontWeight: "700",
+      my: "0",
+      px: ["2rem", "6rem"],
+      py: "2rem",
+      cursor: "pointer",
+      textDecoration: "none",
+      textTransform: "uppercase",
+      transition: "opacity 0.3s ease",
+
+      ":hover": {
+        opacity: "1",
+      },
+    },
+  },
+  nav: {
+    default: {
+      position: "fixed",
+      top: "0",
+      left: "0",
+      right: "0",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      width: "100%",
+      margin: "0",
+      padding: "0",
+      zIndex: "999",
+      transition: "all 0.3s ease",
+      boxShadow: "0px 5px 35px -10px",
+      color: "shadow",
+      backgroundColor: "background",
+    },
+    flat: {
+      variant: "nav.default",
+      boxShadow: "none",
+      backgroundColor: "transparent",
+    },
+  },
+  styles: {
+    root: {
+      backgroundColor: "background",
+      transitionProperty: "background-color",
+      transitionDuration: "0.3s",
+      lineHeight: "1.5",
+    },
+  },
 };

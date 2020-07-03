@@ -1,11 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
-import styled, { keyframes } from "styled-components";
-
-const StyledTypewriter = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  line-height: 1.5;
-`;
+import { keyframes } from "@emotion/core";
+import React, { useEffect, useRef, useState } from "react";
+import { Text } from "theme-ui";
 
 const BlinkCaret = keyframes`
   from,
@@ -16,16 +11,6 @@ const BlinkCaret = keyframes`
     opacity: 100;
   }
 }`;
-
-const BlinkingCursor = styled.span`
-  overflow: hidden;
-  border-bottom: 0.325rem solid;
-  width: 1.75rem;
-  white-space: nowrap;
-  margin-left: 0.2rem;
-  margin-bottom: 1.25rem;
-  animation: ${BlinkCaret} 0.75s step-end infinite;
-`;
 
 // See https://overreacted.io/making-setinterval-declarative-with-react-hooks/ for more information on useInterval
 function useInterval(callback, delay) {
@@ -54,12 +39,12 @@ export function Typewriter({
   deleteSpeed,
   deleteTimeout,
   loop,
+  ...props
 }) {
-  const [text, setText] = useState("");
   const [isPrefixed, setIsPrefixed] = useState(false);
   const [isSuffixed, setIsSuffixed] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [prefixIndex, setPrefixIndex] = useState(0);
+  const [prefixIndex, setPrefixIndex] = useState(props.prefixIndex);
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [letterIndex, setLetterIndex] = useState(0);
   const [waitTime, setWaitTime] = useState(0);
@@ -76,6 +61,12 @@ export function Typewriter({
     return phrases[phraseIndex][1];
   }
 
+  function getText() {
+    return (
+      prefix.substring(0, prefixIndex) + getPhrase().substring(0, letterIndex)
+    );
+  }
+
   function updatePhrase() {
     if (!isPrefixed) {
       writePrefix();
@@ -88,7 +79,6 @@ export function Typewriter({
 
   function writePrefix() {
     if (prefixIndex < prefix.length) {
-      setText(prefix.substring(0, prefixIndex));
       setPrefixIndex(prefixIndex + 1);
       setWaitTime(writeSpeed);
     } else {
@@ -100,7 +90,6 @@ export function Typewriter({
     setWaitTime(writeSpeed);
 
     if (letterIndex <= getPhrase().length) {
-      setText(prefix + getPhrase().substring(0, letterIndex));
       setLetterIndex(letterIndex + 1);
     } else if (!isSuffixed && getSuffix()) {
       setIsSuffixed(true);
@@ -118,10 +107,8 @@ export function Typewriter({
     if (isSuffixed) {
       setIsSuffixed(false);
     } else if (letterIndex > 0) {
-      setText(prefix + getPhrase().substring(0, letterIndex));
       setLetterIndex(letterIndex - 1);
     } else {
-      setText(prefix);
       setIsDeleting(false);
       setPhraseIndex((phraseIndex + 1) % phrases.length);
       setWaitTime(deleteTimeout);
@@ -129,11 +116,29 @@ export function Typewriter({
   }
 
   return (
-    <StyledTypewriter>
-      {text}
+    <Text
+      variant="header"
+      sx={{
+        display: "flex",
+        justifyContent: "flex-start",
+        lineHeight: "1.5",
+      }}
+    >
+      {getText()}
       {isSuffixed && getSuffix()}
-      <BlinkingCursor />
-    </StyledTypewriter>
+      <span
+        sx={{
+          overflow: "hidden",
+          borderBottom: "0.325rem solid",
+          width: "1.75rem",
+          whiteSpace: "nowrap",
+          marginLeft: "0.2rem",
+          marginBottom: "1.25rem",
+          animation: `${BlinkCaret} 1s step-end infinite`,
+          display: ["none", "flex"],
+        }}
+      />
+    </Text>
   );
 }
 

@@ -1,16 +1,6 @@
+import { keyframes } from "@emotion/core";
 import React from "react";
-import styled, { keyframes } from "styled-components";
-import Button from "./Button";
-
-const AboutWrapper = styled.div`
-  margin: auto 0;
-`;
-
-const AboutFooter = styled.section`
-  font-family: "Montserrat", sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-`;
+import { Button, Box, Flex, Grid } from "theme-ui";
 
 const Grow = keyframes`
   0% {
@@ -24,40 +14,38 @@ const Grow = keyframes`
   }
 `;
 
-const AboutButton = styled(Button)`
-  font-family: "Montserrat", sans-serif;
-
-  &:not(:first-child) {
-    margin-left: 1rem;
-  }
-
-  &:not(:last-child) {
-    margin-right: 1rem;
-  }
-`;
-
-const StyledAbout = styled.div`
-  color: #222831;
-  border-left: 2px dotted ${(props) => props.theme.colors.text};
-  margin: 0;
-  padding: 0 2rem;
-  opacity: 1;
-  transform: scale(1);
-  animation: 1.5s ease-out ${Grow};
-`;
-
 export function About({ children, ...props }) {
   return (
-    <AboutWrapper {...props}>
-      <StyledAbout>{children}</StyledAbout>
-    </AboutWrapper>
+    <Box sx={{ margin: "auto 0" }} {...props}>
+      <Box
+        sx={{
+          borderColor: "text",
+          borderLeft: "2px dotted",
+          margin: "0",
+          padding: "0 2rem",
+          opacity: "1",
+          transform: "scale(1)",
+          animation: `1.5s ease-out ${Grow}`,
+        }}
+      >
+        {children}
+      </Box>
+    </Box>
   );
 }
 
-About.Footer = ({ children }) => <AboutFooter>{children}</AboutFooter>;
-
-About.Button = ({ children, ...props }) => (
-  <AboutButton {...props}>{children}</AboutButton>
-);
-
+export function AboutButton({ children, ...props }) {
+  return (
+    <Button
+      as={"a"}
+      sx={{
+        fontFamily: "Montserrat, sans-serif",
+        marginRight: "2rem",
+      }}
+      {...props}
+    >
+      {children}
+    </Button>
+  );
+}
 export default About;
