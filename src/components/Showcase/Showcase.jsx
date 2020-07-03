@@ -3,7 +3,7 @@ import { Box, Flex } from "theme-ui";
 import Container from "../Container";
 import ShowcaseItem from "./ShowcaseItem";
 
-export function Showcase({ items, theme }) {
+export function Showcase({ items }) {
   return (
     <Flex sx={{ width: "100%" }}>
       <Box
