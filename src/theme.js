@@ -111,10 +111,55 @@ export default {
       backgroundColor: "text",
     },
   },
+  links: {
+    nav: {
+      color: "text",
+      fontFamily: "navbar",
+      fontSize: "1.25rem",
+      fontWeight: "700",
+      my: "0",
+      px: ["2rem", "6rem"],
+      py: "2rem",
+      cursor: "pointer",
+      textDecoration: "none",
+      textTransform: "uppercase",
+      transition: "opacity 0.3s ease",
+
+      ":hover": {
+        opacity: "1",
+      },
+    },
+  },
+  nav: {
+    default: {
+      position: "fixed",
+      top: "0",
+      left: "0",
+      right: "0",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      width: "100%",
+      margin: "0",
+      padding: "0",
+      zIndex: "999",
+      transition: "all 0.3s ease",
+      boxShadow: "0px 5px 35px -10px",
+      color: "shadow",
+      backgroundColor: "background",
+    },
+    flat: {
+      variant: "nav.default",
+      boxShadow: "none",
+      backgroundColor: "transparent",
+    },
+  },
   styles: {
     root: {
       backgroundColor: "background",
-      transition: "background-color  0.3s",
+      transitionProperty: "background-color",
+      transitionDuration: "0.3s",
+      lineHeight: "1.5",
     },
   },
 };
