@@ -1,38 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import styled from "@emotion/styled";
-
-const StyledNavbar = styled.nav`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  z-index: 999;
-  transition: all 0.3s ease;
-  box-shadow: ${(props) =>
-    props.flat ? "none" : `0px 5px 35px -10px ${props.theme.colors.shadow}`};
-  background-color: ${(props) =>
-    props.flat ? "transparent" : props.theme.colors.background};
-`;
-
-const StyledLink = styled.a`
-  cursor: pointer;
-  text-decoration: none;
-  text-transform: uppercase;
-  opacity: ${(props) => (props.selected ? 1 : 0.5)};
-  transition: opacity 0.3s ease;
-
-  &:hover {
-    opacity: 1;
-  }
-`;
+import { Box } from "theme-ui";
 
 export function Navbar({ children }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,29 +20,28 @@ export function Navbar({ children }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, [isScrolled]);
 
-  return <StyledNavbar flat={!isScrolled}>{children}</StyledNavbar>;
+  return (
+    <Box as={"nav"} variant={isScrolled ? "nav.default" : "nav.flat"}>
+      {children}
+    </Box>
+  );
 }
 
-export function NavbarLink({ href, children, ...props }) {
+export function NavLink({ href, children, ...props }) {
   let router = useRouter();
 
   return (
     <Link href={href}>
-      <StyledLink
+      <Box
+        as={"a"}
+        variant={"links.nav"}
         sx={{
-          color: "text",
-          fontFamily: "navbar",
-          fontSize: "1.25rem",
-          fontWeight: "700",
-          my: "0",
-          px: ["2rem", "6rem"],
-          py: "2rem",
+          opacity: router.pathname === href ? "1" : "0.5",
         }}
-        selected={router.pathname === href}
         {...props}
       >
         {children}
-      </StyledLink>
+      </Box>
     </Link>
   );
 }
