@@ -6,19 +6,7 @@ function GlobalStyle() {
     <Global
       styles={css`
         html {
-          line-height: 1.5;
           scroll-behavior: smooth;
-        }
-
-        html,
-        body {
-          height: 100%;
-        }
-
-        #root {
-          display: flex;
-          flex-direction: column;
-          min-height: 100%;
         }
       `}
     />
