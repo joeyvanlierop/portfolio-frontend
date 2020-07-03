@@ -9,7 +9,8 @@
     "lint:fix": "npx eslint --fix ."
   },
   "dependencies": {
-    "@emotion/styled": "^10.0.27",
+    "@babel/plugin-transform-react-jsx": "^7.10.4",
+    "@emotion/babel-plugin-jsx-pragmatic": "^0.1.5",
     "axios": "^0.19.2",
     "next": "^9.4.4",
     "normalize.css": "^8.0.1",
@@ -19,8 +20,6 @@
     "theme-ui": "^0.3.1"
   },
   "devDependencies": {
-    "@babel/plugin-transform-react-jsx": "^7.10.1",
-    "@emotion/babel-plugin-jsx-pragmatic": "^0.1.5",
     "eslint": "^7.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.3",
