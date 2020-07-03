@@ -1,0 +1,16 @@
+{$URL} {
+    redir https://www.{$URL}{uri}
+}
+
+www.{$URL} {
+    gzip
+    tls {$EMAIL}
+}
+
+api.{$URL} {
+    gzip
+    tls {$EMAIL}
+    proxy / backend:3000 {
+        transparent
+    }
+}
