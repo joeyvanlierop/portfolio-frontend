@@ -1,102 +1,49 @@
-import styled from "@emotion/styled";
-import React, { useRef, useState } from "react";
-import { Flex } from "theme-ui";
+import React from "react";
+import { Box, Flex } from "theme-ui";
 import Container from "../Container";
 import ShowcaseItem from "./ShowcaseItem";
 
-const ShowcaseButton = styled.button`
-  padding: 0 2rem;
-  background-color: transparent;
-  border: none;
-  &:focus {
-    outline: none;
-  }
-`;
-
-const ShowcaseButtonIcon = styled.span`
-  font-size: 3rem;
-  color: ${({ theme }) => theme.colors.text};
-`;
-
-const ShowcaseWrapper = styled.div`
-  position: relative;
-  width: 90%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  flex: 1;
-
-  &:before {
-    content: "";
-    position: absolute;
-    width: 10%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: linear-gradient(
-      right,
-      transparent,
-      ${({ theme }) => theme.colors.background}
-    );
-    background: -webkit-linear-gradient(
-      right,
-      transparent,
-      ${({ theme }) => theme.colors.background}
-    );
-    z-index: 1;
-  }
-
-  &:after {
-    content: "";
-    position: absolute;
-    width: 10%;
-    height: 100%;
-    right: 0;
-    top: 0;
-    background: linear-gradient(
-      left,
-      transparent,
-      ${({ theme }) => theme.colors.background}
-    );
-    background: -webkit-linear-gradient(
-      left,
-      transparent,
-      ${({ theme }) => theme.colors.background}
-    );
-    z-index: 1;
-  }
-`;
-
-export function Showcase({ items }) {
-  const [offset, setOffset] = useState(0);
-  const [timer, setTimer] = useState(null);
-
-  const offsetRef = useRef(offset);
-  offsetRef.current = offset;
-
-  function addOffset(amount) {
-    setOffset(Math.min(offsetRef.current + amount, 0));
-    setTimer(setTimeout(addOffset, 10, amount));
-  }
-
-  function stopScroll() {
-    clearTimeout(timer);
-  }
-
+export function Showcase({ items, theme }) {
   return (
     <Flex sx={{ width: "100%" }}>
-      {/* <ShowcaseButton onMouseDown={() => addOffset(10)} onMouseUp={stopScroll}>
-        <ShowcaseButtonIcon className="material-icons">
-          chevron_left
-        </ShowcaseButtonIcon>
-      </ShowcaseButton> */}
-      <ShowcaseWrapper>
+      <Box
+        sx={{
+          position: "relative",
+          width: "90%",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+          flex: "1",
+
+          "::before": {
+            content: "''",
+            position: "absolute",
+            width: "10%",
+            height: "100%",
+            left: "0",
+            top: "0",
+            zIndex: "1",
+            background: (theme) =>
+              `-webkitlinear-gradient(right, transparent, ${theme.colors.background})`,
+          },
+
+          "::after": {
+            content: "''",
+            position: "absolute",
+            width: "10%",
+            height: "100%",
+            right: "0",
+            top: "0",
+            zIndex: "1",
+            background: (theme) =>
+              `-webkit-linear-gradient(left, transparent, ${theme.colors.background})`,
+          },
+        }}
+      >
         <Container>
           <Flex
             sx={{
-              willChange: "transform",
-              transform: `translateX(${offset}px)`,
               margin: "auto",
               alignItems: "center",
               transition: "all 0.5s ease-out",
@@ -111,12 +58,7 @@ export function Showcase({ items }) {
             ))}
           </Flex>
         </Container>
-      </ShowcaseWrapper>
-      {/* <ShowcaseButton onMouseDown={() => addOffset(-10)} onMouseUp={stopScroll}>
-        <ShowcaseButtonIcon className="material-icons">
-          chevron_right
-        </ShowcaseButtonIcon>
-      </ShowcaseButton> */}
+      </Box>
     </Flex>
   );
 }
