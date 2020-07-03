@@ -2,7 +2,7 @@ import "normalize.css";
 import React, { Fragment } from "react";
 import AppTheme from "../components/AppTheme";
 import GlobalStyle from "../components/GlobalStyle";
-import Navbar, { NavbarLink } from "../components/Navbar";
+import Navbar, { NavLink } from "../components/Navbar";
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -10,9 +10,9 @@ export default function MyApp({ Component, pageProps }) {
       <GlobalStyle />
       <AppTheme>
         <Navbar id={"top-navbar"}>
-          <NavbarLink href="/">Home</NavbarLink>
-          <NavbarLink href="/blog">Blog</NavbarLink>
-          <NavbarLink href="/notes">Notes</NavbarLink>
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="/blog">Blog</NavLink>
+          <NavLink href="/notes">Notes</NavLink>
         </Navbar>
         <Component {...pageProps} />
       </AppTheme>
