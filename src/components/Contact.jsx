@@ -80,7 +80,7 @@ export function Contact() {
     <Box as="form" onSubmit={handleSubmit}>
       <Grid columns={[1, 2]} gap={["2rem", "4rem"]} sx={{ my: "2rem" }}>
         <Input
-          variant={inputs.name && !sent ? null : "muted"}
+          variant={inputs.name && !sent ? "input" : "muted"}
           onChange={handleInputChange}
           placeholder={"Name"}
           name={"name"}
